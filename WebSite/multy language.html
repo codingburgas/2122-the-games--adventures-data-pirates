@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Website</title>
+</head>
+<body>
+    <a href="#eng" data-reload>English</a>
+    <a href="#bg" data-reload>Bulgarian</a>
+
+    <p id="hi">
+        Welcome everyone!
+    </p>
+
+    <script>
+        var language = {
+            eng: {
+              welcome: "Welcome everyone!"
+            }, 
+            bg: {
+                welcome: "Здравейте всички!"
+            }
+        };
+
+        if (window.location.hash) {
+            if (window.location.hash === "#bg") {
+                hi.textContent = language.bg.welcome;
+            }
+        }
+    </script>
+</body>
+</html>
