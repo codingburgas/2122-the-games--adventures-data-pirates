@@ -6,7 +6,7 @@
 </head>
 <body>
     <a href="#eng" data-reload>English</a>
-    <a href="#de" data-reload>Deutch</a>
+    <a href="#bg" data-reload>Bulgarian</a>
 
     <p id="hi">
         Welcome everyone!
@@ -21,15 +21,15 @@
             eng: {
               welcome: "Welcome everyone!"
             }, 
-            de: {
-              welcome: "Gud morning!"
+            bg: {
+              welcome: "Здравейте всички!"
             }
         };
 
         // define language via window hash
         if (window.location.hash) {
-            if (window.location.hash === "#de") {
-                hi.textContent = language.de.welcome;
+            if (window.location.hash === "#bg") {
+                hi.textContent = language.bg.welcome;
             }
         }
 
