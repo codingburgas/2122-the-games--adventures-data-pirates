@@ -1,0 +1,134 @@
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+/* Main Rule */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  /* Hide horizontal scrollbar */
+  overflow-x: hidden; 
+}
+/* Styling the Buttons on the Navigation Bar */
+li{
+  position: relative;
+  font-size: 16pt;
+  font-family: 'Ubuntu', sans-serif;
+  list-style-type: none;
+  display: inline-block;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-right: 1%;
+  padding: 3% 1%;
+  margin-top: 3%;
+  margin-right: 2%;
+  left: 29%;
+  top: -25%;
+  color: black;  
+}
+
+/* Background for Navigation Bar*/
+.header-bg{
+  position: absolute;
+  display: inline;
+  background-color: #000;
+  width: 100%;
+  height: 25%;
+  top: -12%;
+}
+.header-bg a{
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Navigation Bar Buttons */
+.header{
+  list-style-type: none;
+  position: absolute;
+  left: -33%;
+  top: -7%;
+  z-index: 2;
+  color: #fff;
+  bottom: 89%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 0 0 1%;
+  padding: 0;
+  display: block;
+  transition: top 0.3s;
+}
+
+/* Style Part for Navigation Bar Scroll Animaiton */
+body {
+  --nav-height: 100px;
+  padding-top: var(--nav-height);
+}
+
+.nav {
+  width: 100%;
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.nav--hidden {
+  transform: translateY(calc(-1 * var(--nav-height)));
+  box-shadow: none;
+}
+
+
+/* Style for "Download Now" Button */
+a{
+  text-decoration: none;
+}
+a:visited{
+   color: #fff;
+}
+a:link{
+  color: #fff;
+}
+a:active{
+    color: #fff;
+}
+/* .download-button{
+    position: absolute;
+    height: 25%; 
+    width: 8%;
+    left: 87%;
+    top: 30%;
+    border-style: solid;
+    background-color: #000;
+    border-color: rgb(84, 84, 84);
+    color: #fff;
+    border-radius: 4%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.download-button:hover{
+    background-color: #fff;
+    color: #000;
+} */
+.nav{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;/*Should change the font-family*/
+}
+.scroll{
+  height: 2000px;
+}
+
+.active{
+  text-decoration: underline;
+}
