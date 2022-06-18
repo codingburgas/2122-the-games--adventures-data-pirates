@@ -12,6 +12,29 @@ body{
   overflow-x: hidden; 
 }
 /* Styling the Buttons on the Navigation Bar */
+.logo-button{
+  position: absolute;
+  max-height: 650%;
+  max-width: 650%;
+  top: -20%;
+  left: -350%;
+}
+.shortcut{
+  position: relative;
+  font-size: 16pt;
+  font-family: 'Ubuntu', sans-serif;
+  list-style-type: none;
+  display: inline-block;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-right: 1%;
+  padding: 3% 1%;
+  margin-top: 3%;
+  margin-right: 2%;
+  left: 10%;
+  top: -25%;
+  color: black;
+}
 li{
   position: relative;
   font-size: 16pt;
@@ -24,9 +47,9 @@ li{
   padding: 3% 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 29%;
+  left: 30%;
   top: -25%;
-  color: black;   /*change to black*/
+  color: black;   
 }
 
 /* Background for Navigation Bar*/

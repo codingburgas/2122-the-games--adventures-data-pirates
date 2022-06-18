@@ -32,40 +32,19 @@
       <div class="header-bg">
       </div>
       <div class="header">
-        <nav>
+        <nav>        
           <ul class="nav">
+          <!--Shortcut for the main page with the team logo--><!--To change to the game logo when ready-->
+          <li class="shortcut"><a href="index.html"><img src="images/data_pirates-transparent.png" class="logo-button"></a></li>
           <li><a href="pages/overview.html">Overview</a></li> 
           <li><a href="pages/about-the-game.html">About the Game</a></li> 
-          <li><a href="pages/rules.html">Rules</a></li> 
           <li><a href="pages/about-us.html">About us</a></li>   
-          <li><a href="pages/contact-us.html">Contact us</a></li>
           </ul>
       </nav>
     </div>
    <!-- <a href="#"><button class="download-button">Download Now</button></a> -->
   </div>
-  <div class="scroll">
-    
-    <!-- Script Part for Navigation Bar Scroll Animaiton-->
-   <script type="text/javascript">
-   {
-      const nav = document.querySelector(".nav");
-      let lastScrollY = window.scrollY;
-
-      window.addEventListener("scroll", () => {
-      if (lastScrollY < window.scrollY) {
-      nav.classList.add("nav--hidden");
-      } else {
-        nav.classList.remove("nav--hidden");
-      }
-
-      lastScrollY = window.scrollY;
-     });
-   }
-    </script>
-
-  </div>
-  
+ 
 </body>
 <!-- Close Body -->
 
