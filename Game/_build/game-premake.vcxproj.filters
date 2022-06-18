@@ -15,9 +15,15 @@
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="drawElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="movement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="drawElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

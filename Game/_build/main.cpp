@@ -1,29 +1,38 @@
 #include "raylib.h"
 #include "movement.h"
+#include "drawElement.h"
 
+// Define custom colors for the water effect
+#define waterBlue CLITERAL(Color){ 34, 146, 248, 255 } // background color
+#define waveEffectBlue CLITERAL(Color){ 113, 200, 244, 255 } // wave effect color
 
 int main()
 {
     int screenWidth = 1920;
     int screenHeight = 1080;
     InitWindow(screenWidth, screenHeight, "Game");
-    SetTargetFPS(FLAG_VSYNC_HINT);
+    SetTargetFPS(60);
 
-    // Declares the parameters fo the main character
+    // Declare the parameters for main character
     characterStats mainCharacter;
     mainCharacter.characterWidth = 10;
     mainCharacter.characterHeight = 20;
     mainCharacter.characterCordinatesX = GetScreenWidth() / 2 - float(mainCharacter.characterWidth / 2);
     mainCharacter.characterCordinatesY = GetScreenHeight() / 2 - float(mainCharacter.characterWidth / 2);
-    mainCharacter.characterPosition = { 0, 0 };
+    mainCharacter.characterPosition = { mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY };
     mainCharacter.character = { mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth , mainCharacter.characterHeight };
     mainCharacter.health = 100;
     mainCharacter.healthBar = { 10, 10, mainCharacter.health * 2, mainCharacter.health / 2 };
     Rectangle negativeHealthBar = { 10, 10, 100 * 2, 100 / 2 };
 
+    // Declare Camera2D for player
+    Camera2D playerCamera;
+    playerCamera.offset = { float(screenWidth) / 2 - float(mainCharacter.characterWidth / 2), float(screenHeight) / 2 - float(mainCharacter.characterHeight / 2) };
+    playerCamera.target = { mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY };
+    playerCamera.zoom = 4;
+    playerCamera.rotation = 0;
 
-
-    // Declares the parametres for the creatures
+    // Declare the parametres for the creatures
     const int zombiesCounter = 10;
 
     characterStats zombies[zombiesCounter];
@@ -37,68 +46,32 @@ int main()
         zombies[i].character = { zombies[i].characterCordinatesX,  zombies[i].characterCordinatesY, zombies[i].characterWidth, zombies[i].characterHeight };
     }
 
-    mapData mapForm[10][6]; // temporary map form
+    mapData mapForm[27][43]; // temporary map form
+    int mapHeight = 27;
+    int mapWidth = 43;
+
+    Vector2 mapBlockSize = { 44, 39 };
     bool chance = true; // chance to chip away from the full map
+    Texture2D grass = LoadTexture("../resources/grassBlock.png"); // Load texture for the grass blocks
+    Texture2D water = LoadTexture("../resources/waterEffect.png"); // Load texture for the water effect
 
     // Temporary Randomisation of the map 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < mapHeight; i++)
     {
-        for (int j = 0; j < 6; j++)
+        for (int j = 0; j < mapWidth; j++)
         {
-            // Apply chance to outer rows
-            if (i == 0 || i == 9)
+            chance = GetRandomValue(0, 2);
+            if (chance == 0)
             {
-                chance = GetRandomValue(0, 2);
-                if (chance == 0)
-                {
-                    mapForm[i][j].drawKey = false;
-                }
-            }
-            else
-            {
-                // Apply chance to outer columns
-                if (j == 0 || j == 5)
-                {
-                    chance = GetRandomValue(0, 2);
-                    if (chance == 0)
-                    {
-                        mapForm[i][j].drawKey = false;
-                    }
-                }
+                mapForm[i][j].drawKey = false;
             }
         }
     }
 
-    // Check for single corner blocks --------------------------------------
-        // top left corner
-        if(mapForm[1][1].drawKey == false && mapForm[0][1].drawKey == false)
-        {
-            mapForm[0][0].drawKey = false;
-        }
-
-        // top right corner
-        if(mapForm[1][5].drawKey == false && mapForm[0][4].drawKey == false)
-        {
-            mapForm[0][5].drawKey = false;
-        }
-
-        // bottom right corner
-        if(mapForm[8][0].drawKey == false && mapForm[9][1].drawKey == false)
-        {
-            mapForm[9][0].drawKey = false;
-        }
-
-        // bottom left corner
-        if (mapForm[8][5].drawKey == false && mapForm[9][4].drawKey == false)
-        {
-            mapForm[9][5].drawKey = false;
-        }
-    //-----------------------------------------------------------------------
-
     // Temporary additionals placement
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < mapHeight; i++)
     {
-        for (int j = 0; j < 6; j++)
+        for (int j = 0; j < mapWidth; j++)
         {
             if (mapForm[i][j].drawKey == true)
             {
@@ -120,51 +93,45 @@ int main()
         // Creates the movement for the character
         if (IsKeyDown(KEY_A))
         {
-            mainCharacter.characterCordinatesX -= 300.0f * GetFrameTime();
+            mainCharacter.characterCordinatesX -= 2;
         }
         if (IsKeyDown(KEY_D))
         {
-            mainCharacter.characterCordinatesX += 300.0f * GetFrameTime();
+            mainCharacter.characterCordinatesX += 2;
         }
         if (IsKeyDown(KEY_W))
         {
-            mainCharacter.characterCordinatesY -= 300.0f * GetFrameTime();
+            mainCharacter.characterCordinatesY -= 2;
         }
         if (IsKeyDown(KEY_S))
         {
-            mainCharacter.characterCordinatesY += 300.0f * GetFrameTime();
+            mainCharacter.characterCordinatesY += 2;
         }
 
-        // Creates the visuals of the game
+        // Make playerCamera follow playerdddd
+        playerCamera.target.x = mainCharacter.characterCordinatesX;
+        playerCamera.target.y = mainCharacter.characterCordinatesY;
+
+        // Begin Render
         BeginDrawing();
+
+        // Set background color to waterBlue
+        ClearBackground(waterBlue);
+
+        /*BeginMode2D(playerCamera);
 
         ClearBackground(WHITE);
 
-        // Draw map blocks
-        for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                if (mapForm[i][j].drawKey == true)
-                {
-                    if (mapForm[i][j].spKey == true)
-                    {
-                        DrawRectangle(51 * j + 450, 51 * i + 70, 50, 50, GREEN);
-                    }
-                    else
-                    {
-                        DrawRectangle(51 * j + 450, 51 * i + 70, 50, 50, BLUE);
-                    }
-                }
-            }
-        }
+        DrawTextureEx(LoadTexture("../resources/grassBlock.png"), Vector2{100,100}, 0, 0.2, RAYWHITE);
 
         DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth, mainCharacter.characterHeight, RED);
-        DrawRectangleRec(negativeHealthBar, RED);
-        DrawRectangleRec(mainCharacter.healthBar, GREEN);
+            
+        EndMode2D;*/
 
-        /*spawnCreatures(zombiesCounter, zombies);*/
+        // Draw map
+        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water);
 
+        //spawnCreatures(zombiesCounter, zombies);
 
         EndDrawing();
     }

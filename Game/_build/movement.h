@@ -13,9 +13,4 @@ struct characterStats {
     Rectangle healthBar;
 };
 
-struct mapData {
-    bool drawKey = true;
-    bool spKey = false;
-};
-
 void spawnCreatures(const int creatureCounter, characterStats creature[100]);
