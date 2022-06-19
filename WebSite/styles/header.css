@@ -11,6 +11,17 @@ body{
   /* Hide horizontal scrollbar */
   overflow-x: hidden; 
 }
+
+.triangle{
+  width: 0;
+	height: 0;
+  position: absolute;
+  top: -20%;
+	border-top: 213px solid transparent;
+	border-right: 1280px solid #000;
+	border-bottom: 50px solid transparent;
+  z-index: 2;
+}
 /* Styling the Buttons on the Navigation Bar */
 .logo-button{
   position: absolute;
@@ -31,9 +42,14 @@ body{
   padding: 3% 1%;
   margin-top: 3%;
   margin-right: 2%;
+  border: 1px solid #000;
   left: 10%;
   top: -25%;
-  color: black;
+}
+.shortcut:hover{
+  opacity: 1;
+  background-color: #fff;
+  background-size: 2px;
 }
 li{
   position: relative;
@@ -44,14 +60,18 @@ li{
   justify-content: space-between;
   cursor: pointer;
   margin-right: 1%;
-  padding: 3% 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 30%;
+  left: 33%;
   top: -25%;
+  border: 1px solid #000;
   color: black;   
+  transition-duration: 2s;
+  z-index: 3;
 }
-
+li:hover{
+  border: 2px solid #fff;
+}
 /* Background for Navigation Bar*/
 .header-bg{
   position: absolute;
@@ -60,6 +80,7 @@ li{
   width: 100%;
   height: 25%;
   top: -12%;
+  z-index: 3;
 }
 .header-bg a{
     float: left;
@@ -86,6 +107,7 @@ li{
   padding: 0;
   display: block;
   transition: top 0.3s;
+  z-index: 3;
 }
 
 /* Style Part for Navigation Bar Scroll Animaiton */
@@ -106,6 +128,7 @@ body {
   vertical-align: middle;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
+  z-index: 3;
 }
 
 .nav--hidden {
@@ -127,24 +150,28 @@ a:link{
 a:active{
     color: #fff;
 }
-/* .download-button{
+#download-button{
     position: absolute;
-    height: 25%; 
-    width: 8%;
-    left: 87%;
-    top: 30%;
+    height: 15%; 
+    left: 80%;
+    top: -25%;
+    padding: 1%;
+    padding-bottom: 3%;
     border-style: solid;
     background-color: #000;
     border-color: rgb(84, 84, 84);
     color: #fff;
     border-radius: 4%;
     cursor: pointer;
+    border: 5px solid #000;
     transition: 0.4s;
+    text-align: center;
+    transition-duration: 1s;
 }
-.download-button:hover{
-    background-color: #fff;
-    color: #000;
-} Have to add Download button */
+#download-button:hover{
+    color: black;
+    background-color: rgba(255, 255, 255, 0.4);
+}
 .nav{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;/*Should change the font-family*/
 }

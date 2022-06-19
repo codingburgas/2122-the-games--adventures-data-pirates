@@ -1,3 +1,18 @@
 /* Importing CSS Files */
 @import "header.css";
 @import "footer.css";
+@import "details.css";
+@import "download.css";
+.overview{
+  height: 1080px;
+  width: 1920px;
+  display: inline-block;
+
+}
+
+.about-the-game{
+  height: 1080px;
+  width: 1920px;
+  display: inline-block;
+  background-color: aqua;
+}

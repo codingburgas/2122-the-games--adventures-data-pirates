@@ -1,16 +1,12 @@
-/* Script Part for Navigation Bar Scroll Animaiton*/
+/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
 
-{
-   const nav = document.querySelector(".nav");
-   let lastScrollY = window.scrollY;
-
-   window.addEventListener("scroll", () => {
-   if (lastScrollY < window.scrollY) {
-   nav.classList.add("nav--hidden");
-   } else {
-     nav.classList.remove("nav--hidden");
-   }
-
-   lastScrollY = window.scrollY;
-  });
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
 }

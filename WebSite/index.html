@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<html>
+
   <head>
     <!-- Character Encoding -->
     <meta charset="UTF-8">
@@ -7,15 +10,22 @@
 
     <!-- Importing CSS Files -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-  
+
+    <!-- Importing JS Files -->
+    <script type="text/javascript" src="script/header.js"></script>
+    <script type="text/javascript" src="script/contact-us.js"></script>
 
     <!-- Importing a Favicon for the Website -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/data_pirates.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/data_pirates.png">
 
     <!-- Title of the Page-->
     <title>Data Pirates</title>
   </head>
+  
   <body>
+    <!--Triangle shape on the top of the page-->
+    <div class="triangle"></div>
+
     <!-- Navigation Bar Styling -->
     <div class="header">
       <div class="header-bg">
@@ -24,14 +34,68 @@
         <nav>        
           <ul class="nav">
           <!--Shortcut for the main page with the team logo--><!--To change to the game logo when ready-->
-          <li class="shortcut"><a href="index.html"><img src="images/data_pirates-transparent.png" class="logo-button"></a></li>
+          <li class="shortcut"><a href="index.html"><img src="assets/images/data_pirates-transparent.png" class="logo-button"></a></li>
           <li><a href="pages/overview.html">Overview</a></li> 
           <li><a href="pages/about-the-game.html">About the Game</a></li> 
           <li><a href="pages/about-us.html">About us</a></li>   
+          <li id="download-button"><a href="pages/download.html">Download Now</a></li>
           </ul>
         </nav>
       </div>
-        <!-- <a href="#"><button class="download-button">Download Now</button></a> -->
     </div>
+    
+    <button type="btn" class="download-btn">Download</button>
+    <!--Video background-->
+      <video autoplay muted loop id="game-video">
+        <source src="/assets/videos/example.mp4" type="video/mp4">
+        <source src="/assets/videos/example.ogg" type="video/ogg">
+      </video>
+
+    <!--Overview-->
+    <div class="overview">
+      
+    </div>
+
+    <!--About the game-->
+    <div class="about-the-game">
+      <!--About The Game-->
+      <div class="game-info">
+
+      </div>
+      <!--How-to-play-->
+      <div class="how-to-play">
+
+      </div>
+      
+    </div>
+
+    <!--About Us-->
+    <div class="about-us">
+    </div>
+    <!--Contact Us-->
+    <div class="contact-us">
+      <form onsubmit="sendEmail(); reset(); return false;">
+        <h3>GET IN TOUCH</h3>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Email ID" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <textarea id="message" rows="4" placholder="How can we help you?"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <!--Footer-->
+    <footer>
+    <div class="footer">
+      <div class="footer-content">
+      </div>
+      <div class="footer-bottom">
+      <p id="name-footer">Data Pirates&copy</p>
+      <p id="date">2022</p> 
+      </div>
+    </div>
+    </footer>
+
   </body>
+
 </html>

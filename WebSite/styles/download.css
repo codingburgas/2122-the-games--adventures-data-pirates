@@ -1,0 +1,25 @@
+/* Importing CSS Files */
+@import "header.css";
+@import "footer.css";
+
+.download-btn{
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  background-color: transparent;
+  border: 2px;
+  border-style: solid;
+  border-color: rgb(222, 13, 13);
+  color: white;
+  cursor: pointer;
+  font-size: 40px;
+  top: 60%;
+  left: 43%;
+  z-index: 2;
+  height: 70px;
+  width: 18%;
+  border-radius: 35px;
+  transition: 0.4s;
+}
+.download-btn:hover{
+  top: 58%;
+}
