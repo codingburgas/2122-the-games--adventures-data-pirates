@@ -1,0 +1,15 @@
+#lorem-ipsum {
+    color: black;
+    font: small-caps 12px/30px Georgia, sans-serif;
+    text-align: right;
+}
+#game-video{
+    position: absolute;
+    right: 0px;
+    bottom: -400px;
+    width: 1500px;
+    height: 1200px;
+    z-index: 1;
+    filter: blur(7px);
+  }
+
