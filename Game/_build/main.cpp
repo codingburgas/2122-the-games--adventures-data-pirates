@@ -54,6 +54,25 @@ int main()
     bool chance = true; // chance to chip away from the full map
     Texture2D grass = LoadTexture("../resources/grassBlock.png"); // Load texture for the grass blocks
     Texture2D water = LoadTexture("../resources/waterEffect.png"); // Load texture for the water effect
+    Texture2D rock = LoadTexture("../resources/rock.png"); // Load texture for the rock
+    Texture2D tree1 = LoadTexture("../resources/tree1.png"); // Load texture for the spruce tree
+    int objectStorage[50];
+    int objectCounter = 0;
+    Rectangle objectHitbox[100];
+
+    for (int i = 0; i < 50; i++)
+    {
+        int num = GetRandomValue(0, 1);
+        if (num == 0)
+        {
+            objectStorage[i] = 0;
+
+        }
+        else if (num == 1)
+        {
+            objectStorage[i] = 1;
+        }
+    }
 
     // Temporary Randomisation of the map 
     for (int i = 0; i < mapHeight; i++)
@@ -118,18 +137,16 @@ int main()
         // Set background color to waterBlue
         ClearBackground(waterBlue);
 
-        /*BeginMode2D(playerCamera);
+        BeginMode2D(playerCamera);
 
-        ClearBackground(WHITE);
-
-        DrawTextureEx(LoadTexture("../resources/grassBlock.png"), Vector2{100,100}, 0, 0.2, RAYWHITE);
-
-        DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth, mainCharacter.characterHeight, RED);
-            
-        EndMode2D;*/
+        ClearBackground(waterBlue);
 
         // Draw map
-        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water);
+        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter);
+
+        DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth, mainCharacter.characterHeight, RED);
+
+        EndMode2D;
 
         //spawnCreatures(zombiesCounter, zombies);
 

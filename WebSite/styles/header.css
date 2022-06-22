@@ -63,7 +63,7 @@ li{
   margin-top: 3%;
   margin-right: 2%;
   left: 33%;
-  top: -25%;
+  top: -30%;
   border: 1px solid #000;
   color: black;   
   transition-duration: 2s;
@@ -153,8 +153,8 @@ a:active{
 #download-button{
     position: absolute;
     height: 15%; 
-    left: 80%;
-    top: -25%;
+    left: 150%;
+    top: 70%;
     padding: 1%;
     padding-bottom: 3%;
     border-style: solid;
