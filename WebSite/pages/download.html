@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<html>
+
   <head>
     <!-- Character Encoding -->
     <meta charset="UTF-8">
@@ -6,45 +9,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Importing CSS Files -->
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="../styles/header.css">
-    <link rel="stylesheet" type="text/css" href="../styles/footer.css">
-    <link rel="stylesheet" type="text/css" href="../styles/details.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
 
     <!-- Importing JS Files -->
-    <script type="text/javascript" src="script/header.js"></script>
-
-    <!-- Importing JS files-->
-    <script type="text/javascript" src="script/header.js"></script>
+    <script type="text/javascript" src="../script/header.js" defer></script>
+    <script type="text/javascript" src="../script/contact-us.js" defer></script>
 
     <!-- Importing a Favicon for the Website -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/data_pirates.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/data_pirates.png">
 
     <!-- Title of the Page-->
-    <title>Data Pirates</title> 
+    <title>Data Pirates</title>
   </head>
+  
   <body>
-    <!-- Navigation Bar Styling -->
+    <!--Triangle shape on the top of the page-->
     <div class="triangle"></div>
+
+    <!-- Navigation Bar Styling -->
     <div class="header">
       <div class="header-bg">
       </div>
       <div class="header">
-        <nav>
+        <nav>        
           <ul class="nav">
           <!--Shortcut for the main page with the team logo--><!--To change to the game logo when ready-->
-          <li class="shortcut"><a href="../index.html"><img src="../images/data_pirates-transparent.png" class="logo-button"></a></li>
+          <li class="shortcut"><a href="../index.html"><img src="../assets/images/data_pirates-transparent.png" class="logo-button"></a></li>
           <li><a href="../pages/overview.html">Overview</a></li> 
           <li><a href="../pages/about-the-game.html">About the Game</a></li> 
           <li><a href="../pages/about-us.html">About us</a></li>   
-          <li><a href="../pages/download.html">Download Now</a></li>
+          </ul>
+          <ul>
+          <li id="download-button"><a href="pages/download.html">Download Now</a></li>
           </ul>
         </nav>
       </div>
-      <!--Download link for the game-->
-      <div class="download-btn">
-          <li class="download-button"><a href="..assets//images/data_pirates-transparent.png" download><img src="../assets/images/data_pirates.png" class="download-btn-pic"></a></li>
+    </div>
+    
+    <button type="btn" class="download-btn">Download</button>
+    <!--Video background-->
+      <video autoplay muted loop id="game-video">
+        <source src="../assets/videos/example.mp4" type="video/mp4">
+        <source src="../assets/videos/example.ogg" type="video/ogg">
+      </video>
+
+    <!--Overview-->
+    <div class="overview">
+      
+    </div>
+
+    <!--About the game-->
+    <div class="about-the-game">
+      <!--About The Game-->
+      <div class="game-info">
+
+      </div>
+      <!--How-to-play-->
+      <div class="how-to-play">
+
+      </div>
+      
+    </div>
+
+    <!--About Us-->
+    <div class="about-us">
+    </div>
+    <!--Contact Us-->
+
+    <!--Footer-->
+    <footer>
+    <div class="footer">
+      <div class="footer-content">
+      </div>
+      <div class="footer-bottom">
+      <p id="name-footer">Data Pirates&copy</p>
+      <p id="date">2022</p> 
       </div>
     </div>
+    </footer>
+
   </body>
+
 </html>

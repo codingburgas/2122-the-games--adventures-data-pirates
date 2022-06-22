@@ -1,10 +1,12 @@
 /* Importing CSS Files */
 @import "header.css";
 @import "footer.css";
-@import "details.css";
-@import "download.css";
+@import "overview.css";
+@import "about-the-game.css";
+@import "about-us.css";
 @import "contact-us.css";
-@import "footer-searchbar.css";
+
+
 .overview{
   height: 1080px;
   width: 1920px;
@@ -16,5 +18,51 @@
   height: 1080px;
   width: 1920px;
   display: inline-block;
-  background-color: aqua;
+  background-color: steelblue;
+}
+
+.how-to-play{
+  height: 1080px;
+  width: 1920px;
+  display: inline-block;
+  background-color: blueviolet;
+}
+
+.about-us{
+  height: 1080px;
+  width: 1920px;
+  display: inline-block;
+  background-color: green;
+}
+
+.contact-us{
+    height: 1080px;
+    width: 1920px;
+    display: inline-block;
+    background-color: blue;
+}
+
+.download-btn{
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  background-color: transparent;
+  border: 2px;
+  border-style: solid;
+  border-color: rgb(222, 13, 13);
+  color: white;
+  cursor: pointer;
+  font-size: 40px;
+  top: 60%;
+  left: 43%;
+  z-index: 2;
+  height: 70px;
+  width: 18%;
+  border-radius: 35px;
+  transition: 0.4s;
+}
+.download-btn:hover{
+  top: 58%;
+}
+#game-video{
+  filter: blur(3px);
 }
