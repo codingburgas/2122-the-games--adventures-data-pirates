@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "movement.h"
+#include "game.h"
 #include "drawElement.h"
 
 // Define custom colors for the water effect
@@ -13,6 +13,9 @@ int main()
     InitWindow(screenWidth, screenHeight, "Game");
     SetTargetFPS(60);
 
+    Vector2 mousePointer = { 0.0f, 0.0f };
+    
+
     // Declare the parameters for main character
     characterStats mainCharacter;
     mainCharacter.characterWidth = 10;
@@ -24,6 +27,8 @@ int main()
     mainCharacter.health = 100;
     mainCharacter.healthBar = { 10, 10, mainCharacter.health * 2, mainCharacter.health / 2 };
     Rectangle negativeHealthBar = { 10, 10, 100 * 2, 100 / 2 };
+
+    bool movement = true;
 
     // Declare Camera2D for player
     Camera2D playerCamera;
@@ -59,6 +64,9 @@ int main()
     int objectStorage[50];
     int objectCounter = 0;
     Rectangle objectHitbox[100];
+    int objectType[100];
+
+    int whatToDraw = 0;
 
     for (int i = 0; i < 50; i++)
     {
@@ -109,28 +117,36 @@ int main()
     //Main game loop
     while (!WindowShouldClose())
     {
-        // Creates the movement for the character
-        if (IsKeyDown(KEY_A))
+        mousePointer = GetScreenToWorld2D(GetMousePosition(), playerCamera);
+
+        
+        if (movement == true)
         {
-            mainCharacter.characterCordinatesX -= 2;
-        }
-        if (IsKeyDown(KEY_D))
-        {
-            mainCharacter.characterCordinatesX += 2;
-        }
-        if (IsKeyDown(KEY_W))
-        {
-            mainCharacter.characterCordinatesY -= 2;
-        }
-        if (IsKeyDown(KEY_S))
-        {
-            mainCharacter.characterCordinatesY += 2;
+
+            // Creates the movement for the character
+            if (IsKeyDown(KEY_A))
+            {
+                mainCharacter.characterCordinatesX -= 2;
+            }
+            if (IsKeyDown(KEY_D))
+            {
+                mainCharacter.characterCordinatesX += 2;
+            }
+            if (IsKeyDown(KEY_W))
+            {
+                mainCharacter.characterCordinatesY -= 2;
+            }
+            if (IsKeyDown(KEY_S))
+            {
+                mainCharacter.characterCordinatesY += 2;
+            }
+
         }
 
         // Make playerCamera follow playerdddd
         playerCamera.target.x = mainCharacter.characterCordinatesX;
         playerCamera.target.y = mainCharacter.characterCordinatesY;
-
+        
         // Begin Render
         BeginDrawing();
 
@@ -142,13 +158,29 @@ int main()
         ClearBackground(waterBlue);
 
         // Draw map
-        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter);
+        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType);
 
         DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth, mainCharacter.characterHeight, RED);
 
+        for (int i = 0; i < 100; i++)
+        {
+            if (CheckCollisionPointRec(mousePointer, objectHitbox[i]))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    DrawRectangleRec(objectHitbox[i], RED);
+                }
+            }
+        }
+
         EndMode2D;
 
+        
+
         //spawnCreatures(zombiesCounter, zombies);
+
+       
+        
 
         EndDrawing();
     }

@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include "drawElement.h"
 
-void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, bool change, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, int objects[50], Rectangle objectHitbox[100], int objectCounter)
+void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, bool change, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100])
 {
     // Draw map
     for (int i = 0; i < mapY; i++)
@@ -55,10 +55,12 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                             if (objects[i] == 0)
                             {
                                 // Draw rock on the map
-                                DrawTextureEx(rock, Vector2{ mapBlockSize.x * j + 12, mapBlockSize.y * i - 5 }, 0, 0.17, RAYWHITE);
+                                DrawTextureEx(rock, Vector2{ mapBlockSize.x * j + 27, mapBlockSize.y * i + 5 }, 0, 0.08, RAYWHITE);
 
                                 // Make hitbox for object rock
-                                objectHitbox[objectCounter] = { mapBlockSize.x * j + 17, mapBlockSize.y * i + 2, 32, 26 };
+                                objectHitbox[objectCounter] = { mapBlockSize.x * j + 22, mapBlockSize.y * i + 2, 25, 25 };
+
+                                objectType[objectCounter] = 1;
                             }
                             else if (objects[i] == 1)
                             {
@@ -68,6 +70,7 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                                 // Make hitbox for object tree1
                                 objectHitbox[objectCounter] = { mapBlockSize.x * j + 23, mapBlockSize.y * i - float(18.5), 28, 42 };
 
+                                objectType[objectCounter] = 2;
                             }
 
                             // Add one position to counter

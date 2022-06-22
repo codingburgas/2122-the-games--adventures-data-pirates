@@ -179,7 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="drawElement.h" />
-    <ClInclude Include="movement.h" />
+    <ClInclude Include="game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

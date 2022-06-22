@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "movement.h"
+#include "game.h"
 
 void spawnCreatures(const int creatureCounter, characterStats creature[100])
 {
