@@ -25,9 +25,9 @@ body{
 /* Styling the Buttons on the Navigation Bar */
 .logo-button{
   position: absolute;
-  max-height: 650%;
-  max-width: 650%;
-  top: -20%;
+  max-height: 570%;
+  max-width: 570%;
+  top: -16%;
   left: -350%;
 }
 .shortcut{
@@ -43,7 +43,7 @@ body{
   margin-top: 3%;
   margin-right: 2%;
   border: 1px solid #000;
-  left: 10%;
+  left: 8.5%;
   top: -25%;
 }
 .shortcut:hover{
@@ -182,3 +182,4 @@ a:active{
 .active{
   text-decoration: underline;
 }
+

@@ -4,6 +4,7 @@
 @import "details.css";
 @import "download.css";
 @import "contact-us.css";
+@import "footer-searchbar.css";
 .overview{
   height: 1080px;
   width: 1920px;

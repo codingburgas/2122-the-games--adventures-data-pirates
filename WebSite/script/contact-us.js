@@ -1,4 +1,4 @@
-/*Contact us form (Works only if the data is correctly typed by the SMPT )*/
+/*Contact us form (Works only if the data is correctly typed by the SMPT(Simple Mail Transfer Protocol); Used )*/
 src="https://smtpjs.com/v3/smtp.js"
 
 function sendEmail(){
