@@ -29,7 +29,7 @@ body{
   position: absolute;
   max-height: 570%;
   max-width: 570%;
-  top: -16%;
+  top: 10%;
   left: -350%;
 }
 
@@ -70,8 +70,8 @@ li{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 34%;
-  top: -30%;
+  left: 32%;
+  top: -10%;
   border: 1px solid #000;
   color: black;   
   z-index: 3;
@@ -128,67 +128,6 @@ li{
   justify-content: space-between;
 }
 
-/*Навигационно меню*/
-.header ul li{
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
-  position: relative;
-  margin-left: 20px;
-}
-/*Навигационно меню*/
-.header ul li a{
-  text-decoration: none;
-  color: #fff;
-  text-transform: uppercase;
-  line-height: 30px;
-}
-/*Навигационно меню*/
-.header ul ul{
-  position:absolute;
-  top: 40px;
-  opacity: 0;
-  padding: -40px 20px;
-  visibility: hidden;
-  transition: top .25s;
-}
-/*Навигационно меню*/
-.header ul li:hover > ul{
-  opacity: 1;
-  visibility: visible;
-}
-/*Навигационно меню*/
-.header ul ul li{
-  position: relative;
-  margin: 0px;
-  padding: 5px 0;
-  width: 370%;
-  float: none;
-  display: list-items;
-}
-/*Навигационно меню*/
-.header ul ul ul li{
-  position: relative;
-  width: auto;
-  height: auto;
-  top: 0px;
-  left: 70px;
-}
-/*Навигационно меню*/
-.header ul li::after{
-  content: '';
-  height: 3px;
-  width: 0;
-  background: #23cebd;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  transition: 0.25s;
-}
-/*Навигационно меню*/
-.header ul li:hover::after{
-  width: 100%;
-}
 /* Style Part for Navigation Bar Scroll Animaiton */
 body {
   --nav-height: 100px;
@@ -241,7 +180,7 @@ a:active{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 55%;
+  left: 50%;
   top: -30%;
   border: 1px solid #000;
   color: black;   

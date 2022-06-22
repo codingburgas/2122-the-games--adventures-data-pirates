@@ -14,6 +14,7 @@
     <!-- Importing JS Files -->
     <script type="text/javascript" src="script/header.js" defer></script>
     <script type="text/javascript" src="script/contact-us.js" defer></script>
+    <script type="text/javascript" src="script/Slideshow_Gallery.js" defer></script>
 
     <!-- Importing a Favicon for the Website -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/data_pirates.png">
@@ -43,13 +44,89 @@
         </nav>
       </div>
     </div>
-    
-    <button type="btn" class="download-btn">Download</button>
-    <!--Video background-->
-      <video autoplay muted loop id="game-video">
-        <source src="assets/videos/example.mp4" type="video/mp4">
-        <source src="assets/videos/example.ogg" type="video/ogg">
-      </video>
+
+
+    <!-- Container for the image gallery -->
+<div class="container">
+
+  <!-- Full-width video with number text -->
+<div class="mySlides">
+  <div class="numbertext">1 / 7</div>
+    <video class="demo cursor" id="game-video" autoplay muted loop style="width:100%">
+      <source src="assets/videos/example.mp4" type="video/mp4">
+      <source src="assets/videos/example.ogg" type="video/ogg">
+    </video>
+  </div>
+  
+  <!-- Full-width images with number text -->
+  <div class="mySlides">
+    <div class="numbertext">2 / 7</div>
+      <img src="assets/images/img_woods_wide.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 7</div>
+      <img src="assets/images/img_5terre_wide.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 7</div>
+      <img src="assets/images/img_mountains_wide.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 7</div>
+      <img src="assets/images/img_lights_wide.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 7</div>
+      <img src="assets/images/img_nature_wide.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">7 / 7</div>
+      <img src="assets/images/img_snow_wide.png" style="width:100%">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images and a video -->
+  <div class="row">
+    <div class="column">
+    <video class="demo cursor" autoplay muted loop style="width:50%" onclick="currentSlide(1)" alt="Game Teaser">
+      <source src="assets/videos/example.mp4" type="video/mp4">
+      <source src="assets/videos/example.ogg" type="video/ogg">
+    </video>
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_woods_wide.png" style="width:50%" onclick="currentSlide(2)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_5terre_wide.png" style="width:50%" onclick="currentSlide(3)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_mountains_wide.png" style="width:50%" onclick="currentSlide(4)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_lights_wide.png" style="width:50%" onclick="currentSlide(5)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_nature_wide.png" style="width:50%" onclick="currentSlide(6)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/images/img_snow_wide.png" style="width:50%" onclick="currentSlide(7)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
 
     <!--Overview-->
     <div class="overview">
