@@ -174,12 +174,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="buildMapLayouts.cpp" />
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="drawElement.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buildMapLayouts.h" />
+    <ClInclude Include="collision.h" />
     <ClInclude Include="drawElement.h" />
     <ClInclude Include="game.h" />
   </ItemGroup>

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "raylib.h"
 
 struct characterStats {
@@ -7,10 +6,7 @@ struct characterStats {
     float characterHeight;
     float characterCordinatesX;
     float characterCordinatesY;
-    float health;
     Vector2 characterPosition;
     Rectangle character;
-    Rectangle healthBar;
+    Texture2D texture;
 };
-
-void spawnCreatures(const int creatureCounter, characterStats creature[100]);

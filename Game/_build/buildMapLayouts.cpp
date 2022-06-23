@@ -1,7 +1,7 @@
 #include "buildMapLayouts.h"
 
 // Build 1-st map layout
-bool** buildMapLayout1(unsigned height, unsigned width)
+bool** buildMapLayout1(int height, int width)
 {
     bool** mapLayout1 = 0;
     mapLayout1 = new bool* [height];
@@ -348,7 +348,7 @@ bool** buildMapLayout1(unsigned height, unsigned width)
 }
 
 // Build 2-nd map layout
-bool** buildMapLayout2(unsigned height, unsigned width)
+bool** buildMapLayout2(int height, int width)
 {
     bool** mapLayout2 = 0;
     mapLayout2 = new bool* [height];
@@ -827,7 +827,7 @@ bool** buildMapLayout2(unsigned height, unsigned width)
 }
 
 // Build 3-rd map layout
-bool** buildMapLayout3(unsigned height, unsigned width)
+bool** buildMapLayout3(int height, int width)
 {
     bool** mapLayout3 = 0;
     mapLayout3 = new bool* [height];
