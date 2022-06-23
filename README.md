@@ -64,7 +64,7 @@
   <b>Gabriel Dimitrov(Back-End Web Developer)</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>GGDimitrov21@codingburgas.bg</a> <br>
 
-  <b>Georgi Ivanov Chebotarev(Front-End Web Developer)</b> <br>
+  <b>Georgi Ivanov(Front-End Web Developer)</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>GNIvanov21@codingburgas.bg</a> <br>
 
   <b>Bozhidar Dimov(Front-End Web Developer)</b> <br>
