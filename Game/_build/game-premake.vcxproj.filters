@@ -18,12 +18,18 @@
     <ClCompile Include="drawElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="buildMapLayouts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="drawElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buildMapLayouts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

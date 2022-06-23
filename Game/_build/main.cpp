@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "game.h"
 #include "drawElement.h"
+#include "buildMapLayouts.h"
 
 // Define custom colors for the water effect
 #define waterBlue CLITERAL(Color){ 34, 146, 248, 255 } // background color
@@ -51,9 +52,82 @@ int main()
         zombies[i].character = { zombies[i].characterCordinatesX,  zombies[i].characterCordinatesY, zombies[i].characterWidth, zombies[i].characterHeight };
     }
 
-    mapData mapForm[27][43]; // temporary map form
+    
+    // map layouts
+    mapData mapLayout1[27][43];
+    mapData mapLayout2[27][43];
+    mapData mapLayout3[27][43];
+    mapData currentMapForm[27][43];
     int mapHeight = 27;
     int mapWidth = 43;
+    int currentMapLayout = GetRandomValue(1, 3); // temporary map layout randomisation
+
+    // build arrays
+    bool** buildArray1 = buildMapLayout1(mapHeight, mapWidth);
+    bool** buildArray2 = buildMapLayout2(mapHeight, mapWidth);
+    bool** buildArray3 = buildMapLayout3(mapHeight, mapWidth);
+
+    // Save 1-st map layout
+    for (int i = 0; i < mapHeight; i++)
+    {
+        for (int j = 0; j < mapWidth; j++)
+        {
+            mapLayout1[i][j].drawKey = buildArray1[i][j];
+        }
+    }
+
+    // Save 2-nd map layout
+    for (int i = 0; i < mapHeight; i++)
+    {
+        for (int j = 0; j < mapWidth; j++)
+        {
+            mapLayout2[i][j].drawKey = buildArray2[i][j];
+        }
+    }
+
+    // Save 3-rd map layout
+    for (int i = 0; i < mapHeight; i++)
+    {
+        for (int j = 0; j < mapWidth; j++)
+        {
+            mapLayout3[i][j].drawKey = buildArray3[i][j];
+        }
+    }
+
+    // Update the currect form of the map, based on the currentMapLayout variable
+    switch (currentMapLayout)
+    {
+    case 1:
+        // Update the form of the map to the 1-st layout
+        for (int i = 0; i < mapHeight; i++)
+        {
+            for (int j = 0; j < mapWidth; j++)
+            {
+                currentMapForm[i][j].drawKey = mapLayout1[i][j].drawKey;
+            }
+        }
+        break;
+    case 2:
+        // Update the form of the map to the 2-nd layout
+        for (int i = 0; i < mapHeight; i++)
+        {
+            for (int j = 0; j < mapWidth; j++)
+            {
+                currentMapForm[i][j].drawKey = mapLayout2[i][j].drawKey;
+            }
+        }
+        break;
+    case 3:
+        // Update the form of the map to the 3-rd layout
+        for (int i = 0; i < mapHeight; i++)
+        {
+            for (int j = 0; j < mapWidth; j++)
+            {
+                currentMapForm[i][j].drawKey = mapLayout3[i][j].drawKey;
+            }
+        }
+        break;
+    }
 
     Vector2 mapBlockSize = { 44, 39 };
     bool chance = true; // chance to chip away from the full map
@@ -82,30 +156,17 @@ int main()
         }
     }
 
-    // Temporary Randomisation of the map 
-    for (int i = 0; i < mapHeight; i++)
-    {
-        for (int j = 0; j < mapWidth; j++)
-        {
-            chance = GetRandomValue(0, 2);
-            if (chance == 0)
-            {
-                mapForm[i][j].drawKey = false;
-            }
-        }
-    }
-
     // Temporary additionals placement
     for (int i = 0; i < mapHeight; i++)
     {
         for (int j = 0; j < mapWidth; j++)
         {
-            if (mapForm[i][j].drawKey == true)
+            if (currentMapForm[i][j].drawKey == true)
             {
                 chance = GetRandomValue(0, 6);
                 if (chance == 0)
                 {
-                    mapForm[i][j].spKey = true;
+                    currentMapForm[i][j].spKey = true;
                 }
             }
         }
@@ -158,7 +219,7 @@ int main()
         ClearBackground(waterBlue);
 
         // Draw map
-        drawMap(mapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType);
+        drawMap(currentMapForm, mapWidth, mapHeight, mapBlockSize, chance, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType);
 
         DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.characterWidth, mainCharacter.characterHeight, RED);
 
@@ -174,17 +235,37 @@ int main()
         }
 
         EndMode2D;
-
-        
-
         //spawnCreatures(zombiesCounter, zombies);
-
-       
-        
 
         EndDrawing();
     }
 
     CloseWindow();
+
+    // Delete the build arrays which no longer needed
+    // Delete buildArra1
+    for (int i = 0; i < mapHeight; i++)
+    {
+        delete[] buildArray1[i];
+    }
+    delete[] buildArray1;
+    buildArray1 = 0;
+
+    // Delete buildArra2
+    for (int i = 0; i < mapHeight; i++)
+    {
+        delete[] buildArray2[i];
+    }
+    delete[] buildArray2;
+    buildArray2 = 0;
+
+    // Delete buildArra3
+    for (int i = 0; i < mapHeight; i++)
+    {
+        delete[] buildArray3[i];
+    }
+    delete[] buildArray3;
+    buildArray3 = 0;
+
     return 0;
 }

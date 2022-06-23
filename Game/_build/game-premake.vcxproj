@@ -173,11 +173,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="buildMapLayouts.cpp" />
     <ClCompile Include="drawElement.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="buildMapLayouts.h" />
     <ClInclude Include="drawElement.h" />
     <ClInclude Include="game.h" />
   </ItemGroup>
