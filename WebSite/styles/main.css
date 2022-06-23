@@ -5,27 +5,28 @@
 @import "about-the-game.css";
 @import "about-us.css";
 @import "contact-us.css";
+@import "extras.css";
 
 
 .overview{
   height: 1080px;
   width: 1920px;
   display: inline-block;
-
 }
 
-.about-the-game{
+.game-info{
   height: 1080px;
   width: 1920px;
   display: inline-block;
-  background-color: steelblue;
+  background-color: blue;
 }
+
 
 .how-to-play{
   height: 1080px;
   width: 1920px;
   display: inline-block;
-  background-color: blueviolet;
+  background-color: violet;
 }
 
 .about-us{
@@ -39,7 +40,7 @@
     height: 1080px;
     width: 1920px;
     display: inline-block;
-    background-color: blue;
+    background-color: pink;
 }
 
 .download-btn{

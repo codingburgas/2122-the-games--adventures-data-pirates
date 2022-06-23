@@ -17,11 +17,13 @@ body{
   width: 0;
 	height: 0;
   position: absolute;
-  top: -20%;
-	border-top: 250px solid transparent;
-	border-right: 1525px solid #000;
+  top: -17.65%;
+	border-top: 210px solid transparent;
+	border-right: 1500px solid #000;
 	border-bottom: 50px solid transparent;
+  /*clip-path: polygon(0 0, 100% 0, 100% 20%, 0 10%);*/
   z-index: 2;
+  transform: rotate(0.7deg);
 }
 
 /* Styling the Buttons on the Navigation Bar */
@@ -70,7 +72,7 @@ li{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 32%;
+  left: 29%;
   top: -10%;
   border: 1px solid #000;
   color: black;   
@@ -180,7 +182,7 @@ a:active{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 50%;
+  left: 40%;
   top: -30%;
   border: 1px solid #000;
   color: black;   
