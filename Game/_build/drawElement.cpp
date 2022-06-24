@@ -122,7 +122,7 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                     }
                 }
 
-                DrawRectangleRec(Rectangle{ mapBlockSize.x * j + 15, mapBlockSize.y * i, grass.width * float(0.35), grass.height * float(0.35) }, RED);
+                DrawRectangleRec(Rectangle{ mapBlockSize.x * j + 15, mapBlockSize.y * i, grass.width * float(0.35), grass.height * float(0.35) }, BLANK);
 
             }
         }

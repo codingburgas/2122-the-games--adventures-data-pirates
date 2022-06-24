@@ -32,6 +32,12 @@ int main()
     playerCamera.zoom = 4;
     playerCamera.rotation = 0;
 
+    // Declare inventory
+    Vector2 inventoryPos = { float(GetScreenWidth()) - 30, float(GetScreenHeight()) - 30 };
+    bool drawInventory = false;
+    int itemsCounter[2] = {0, 0};
+    Texture2D woodItem = LoadTexture("../resources/spruceWood.png");
+    Texture2D stoneItem = LoadTexture("../resources/miniRock.png");
 
     // map layouts
     mapData mapLayout1[27][43];
@@ -178,14 +184,15 @@ int main()
     while (!WindowShouldClose())
     {
         mousePointer = GetScreenToWorld2D(GetMousePosition(), playerCamera);
-
+        inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 110, float(screenHeight) - 110}, playerCamera);
         // Creates the movement for the character
 
         if (IsKeyDown(KEY_A))
         {
-            mainCharacter.CordinatesX -= 2;
+            mainCharacter.CordinatesX -= 1;
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 115, float(screenHeight) - 110 }, playerCamera);
 
-            if (framesCounter >= (60 / framesSpeed))
+            /*if (framesCounter >= (60 / framesSpeed))
             {
                 framesCounter = 0;
                 currentFrame++;
@@ -197,20 +204,42 @@ int main()
 
                 frameRecLeft.x = (float)currentFrame * (float)chMoveXTextureLeft.width / 8 ;
                 
-            }
-        }
+            }*/
 
+            
+        }
         if (IsKeyDown(KEY_D))
         {   
             mainCharacter.CordinatesX += 1;
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 109, float(screenHeight) - 110 }, playerCamera);
         }
         if (IsKeyDown(KEY_W))
         {
             mainCharacter.CordinatesY -= 1;
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 110, float(screenHeight) - 112 }, playerCamera);
         }
         if (IsKeyDown(KEY_S))
         {
             mainCharacter.CordinatesY += 1;
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 110, float(screenHeight) - 105 }, playerCamera);
+        }
+
+        // Ensure that that the inventory blocks stick to the bottom right corner
+        if (IsKeyDown(KEY_A) && IsKeyDown(KEY_W))
+        {
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 115, float(screenHeight) - 112 }, playerCamera);
+        }
+        if (IsKeyDown(KEY_A) && IsKeyDown(KEY_S))
+        {
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 115, float(screenHeight) - 105 }, playerCamera);
+        }
+        if (IsKeyDown(KEY_D) && IsKeyDown(KEY_W))
+        {
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 109, float(screenHeight) - 112 }, playerCamera);
+        }
+        if (IsKeyDown(KEY_D) && IsKeyDown(KEY_S))
+        {
+            inventoryPos = GetScreenToWorld2D(Vector2{ float(screenWidth) - 109, float(screenHeight) - 105 }, playerCamera);
         }
 
 
@@ -252,28 +281,55 @@ int main()
         // Draw map
         drawMap(currentMapForm, mapWidth, mapHeight, mapBlockSize, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType, textureStorage);
 
-        /*DrawTextureEx(mainCharacter.texture, Vector2{ mainCharacter.CordinatesX, mainCharacter.CordinatesY }, 0, 0.15, RAYWHITE);*/
+        DrawTextureEx(mainCharacter.texture, Vector2{ mainCharacter.CordinatesX, mainCharacter.CordinatesY }, 0, 0.15, RAYWHITE);
 
-        DrawTexture(chMoveXTextureRight, GetScreenWidth() / 2, GetScreenHeight() / 2, RAYWHITE);
+        /*DrawTexture(chMoveXTextureRight, GetScreenWidth() / 2, GetScreenHeight() / 2, RAYWHITE);*/
         
-        if (IsKeyDown(KEY_A))
+        //if (IsKeyDown(KEY_A))
+        //{
+        //    /*DrawTextureRec(chMoveXTextureLeft, frameRecLeft, Vector2{ 0, 0 }, WHITE);*/
+        //}
+
+        //if (IsKeyDown(KEY_D))
+        //{
+        //    
+        //}
+        //if (IsKeyDown(KEY_W))
+        //{
+        //    
+        //}
+        //if (IsKeyDown(KEY_S))
+        //{
+        //    
+        //}
+
+        // Draw inventory
+        if (!drawInventory)
         {
-            DrawTextureRec(chMoveXTextureLeft, frameRecLeft, Vector2{ 0, 0 }, WHITE);
+            if (IsKeyPressed(KEY_E))
+            {
+                drawInventory = true;
+            }
+        }
+        else
+        {
+            if (IsKeyPressed(KEY_E))
+            {
+                drawInventory = false;
+            }
         }
 
-        if (IsKeyDown(KEY_D))
+        if (drawInventory == true)
         {
-            mainCharacter.CordinatesX += 1;
-        }
-        if (IsKeyDown(KEY_W))
-        {
-            mainCharacter.CordinatesY -= 1;
-        }
-        if (IsKeyDown(KEY_S))
-        {
-            mainCharacter.CordinatesY += 1;
-        }
+            DrawRectangle(inventoryPos.x, inventoryPos.y, 25, 25, DARKGRAY);
+            DrawTextureEx(woodItem, Vector2{inventoryPos.x, inventoryPos.y }, 0, 0.2, RAYWHITE);
+            /*DrawText(TextFormat("Score: %i", itemsCounter[0]), inventoryPos.x + float(2.5), inventoryPos.y + float(3), 0, WHITE);*/
 
+            DrawRectangle(inventoryPos.x, inventoryPos.y - 28, 25, 25, DARKGRAY);
+            DrawTextureEx(stoneItem, Vector2{ inventoryPos.x + float(2.5), inventoryPos.y - 24 }, 0, 0.15, RAYWHITE);
+            /*DrawTextureEx();
+            DrawText();*/
+        }
 
 
         EndMode2D;
