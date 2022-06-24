@@ -12,30 +12,27 @@ int main()
     SetTargetFPS(60);
 
     Vector2 mousePointer = { 0.0f, 0.0f };
-    
+
     // Declare the parameters for main character
-    characterStats player;
-    player.texture = LoadTexture("../resources/player.png");
-    player.characterWidth = 10;
-    player.characterHeight = 20;
-    player.CordinatesX = GetScreenWidth() / 2 - float(player.characterWidth / 2);
-    player.CordinatesY = GetScreenHeight() / 2 - float(player.characterWidth / 2);
-    player.characterPosition = { player.CordinatesX, player.CordinatesY };
-    player.character = { player.CordinatesX, player.CordinatesY, player.characterWidth , player.characterHeight };
+    characterStats mainCharacter;
+    mainCharacter.texture = LoadTexture("../resources/player.png");
+    mainCharacter.characterWidth = 10;
+    mainCharacter.characterHeight = 20;
+    mainCharacter.CordinatesX = GetScreenWidth() / 2 - float(mainCharacter.characterWidth / 2);
+    mainCharacter.CordinatesY = GetScreenHeight() / 2 - float(mainCharacter.characterWidth / 2);
+    mainCharacter.characterPosition = { mainCharacter.CordinatesX, mainCharacter.CordinatesY };
+    mainCharacter.character = { mainCharacter.CordinatesX, mainCharacter.CordinatesY, mainCharacter.characterWidth , mainCharacter.characterHeight };
 
     bool movement = true;
 
     // Declare Camera2D for player
     Camera2D playerCamera;
-    playerCamera.offset = { float(screenWidth) / 2 - float(player.characterWidth / 2), float(screenHeight) / 2 - float(player.characterHeight / 2) };
-    playerCamera.target = { player.CordinatesX, player.CordinatesY };
+    playerCamera.offset = { float(screenWidth) / 2 - float(mainCharacter.characterWidth / 2), float(screenHeight) / 2 - float(mainCharacter.characterHeight / 2) };
+    playerCamera.target = { mainCharacter.CordinatesX, mainCharacter.CordinatesY };
     playerCamera.zoom = 4;
     playerCamera.rotation = 0;
 
-    //Declaer player inventory
-    Vector2 inventoryPos = {0,0};
 
-    
     // map layouts
     mapData mapLayout1[27][43];
     mapData mapLayout2[27][43];
@@ -49,6 +46,15 @@ int main()
     bool** buildArray1 = buildMapLayout1(mapHeight, mapWidth);
     bool** buildArray2 = buildMapLayout2(mapHeight, mapWidth);
     bool** buildArray3 = buildMapLayout3(mapHeight, mapWidth);
+
+    Texture2D chMoveXTextureRight = LoadTexture("../resources/1stCharacterMovementX.png");
+    Texture2D chMoveXTextureLeft = LoadTexture("../resources/1stCharacterMovementXleft.png");
+
+    Rectangle frameRecRight = { mainCharacter.CordinatesX, mainCharacter.CordinatesY, (float)chMoveXTextureRight.width, (float)chMoveXTextureRight.height };
+    Rectangle frameRecLeft = {0, 0, (float)chMoveXTextureLeft.width / 8, (float)chMoveXTextureLeft.height };
+    int currentFrame = 0;
+    int framesCounter = 0;
+    int framesSpeed = 8;
 
     // Save 1-st map layout
     for (int i = 0; i < mapHeight; i++)
@@ -124,6 +130,11 @@ int main()
     int objectCounter = 0;
     Rectangle objectHitbox[100];
     int objectType[100];
+    Vector2 textureStorage[100];
+    int requiredItems[2][1];
+
+    requiredItems[0][0] = 0;
+    requiredItems[1][0] = 0;
 
     // Temporary additionals placement
     for (int i = 0; i < mapHeight; i++)
@@ -141,6 +152,7 @@ int main()
         }
     }
 
+    // Randomize different types of objects
     for (int i = 0; i < 50; i++)
     {
         int num = GetRandomValue(0, 1);
@@ -155,61 +167,78 @@ int main()
         }
     }
 
-    // Declares the character camera
+    storeTexturePosition(currentMapForm, mapWidth, mapHeight, mapBlockSize, objectStorage, objectCounter, objectType, textureStorage);
+
+    // Create hitboxes for objects on map
+    applyObjectHitBox(currentMapForm, mapWidth, mapHeight, mapBlockSize, objectStorage, objectHitbox, objectCounter, objectType);
+
 
 
     //Main game loop
     while (!WindowShouldClose())
     {
         mousePointer = GetScreenToWorld2D(GetMousePosition(), playerCamera);
-        inventoryPos = GetScreenToWorld2D(Vector2{ 0,0 }, playerCamera);
-        getObjectCords(currentMapForm, mapWidth, mapHeight, mapBlockSize, objectStorage, objectHitbox, objectCounter, objectType);
 
         // Creates the movement for the character
-           
+
         if (IsKeyDown(KEY_A))
         {
-            player.CordinatesX -= 2;
-            inventoryPos = GetScreenToWorld2D(Vector2{ -8,0 }, playerCamera);
-        }        
+            mainCharacter.CordinatesX -= 2;
+
+            if (framesCounter >= (60 / framesSpeed))
+            {
+                framesCounter = 0;
+                currentFrame++;
+
+                if (currentFrame > 8)
+                {
+                    currentFrame = 0;
+                }
+
+                frameRecLeft.x = (float)currentFrame * (float)chMoveXTextureLeft.width / 8 ;
+                
+            }
+        }
+
         if (IsKeyDown(KEY_D))
-        {
-            player.CordinatesX += 2;
-            inventoryPos = GetScreenToWorld2D(Vector2{ 8,0 }, playerCamera);
+        {   
+            mainCharacter.CordinatesX += 1;
         }
         if (IsKeyDown(KEY_W))
         {
-            player.CordinatesY -= 2;
-            inventoryPos = GetScreenToWorld2D(Vector2{ 0,-8 }, playerCamera);
+            mainCharacter.CordinatesY -= 1;
         }
         if (IsKeyDown(KEY_S))
         {
-            player.CordinatesY += 2;
-            inventoryPos = GetScreenToWorld2D(Vector2{ 0,8 }, playerCamera);
-        }
-
-        if (IsKeyDown(KEY_A) && IsKeyDown(KEY_W))
-        {
-            inventoryPos = GetScreenToWorld2D(Vector2{ -8,-8 }, playerCamera);
-        }
-        if (IsKeyDown(KEY_A) && IsKeyDown(KEY_S))
-        {
-            inventoryPos = GetScreenToWorld2D(Vector2{ -8,8 }, playerCamera);
-        }
-        if (IsKeyDown(KEY_D) && IsKeyDown(KEY_W))
-        {
-            inventoryPos = GetScreenToWorld2D(Vector2{ 8,-8 }, playerCamera);
-        }
-        if (IsKeyDown(KEY_D) && IsKeyDown(KEY_S))
-        {
-            inventoryPos = GetScreenToWorld2D(Vector2{ 8,8 }, playerCamera);
+            mainCharacter.CordinatesY += 1;
         }
 
 
         // Make playerCamera follow player
-        playerCamera.target.x = player.CordinatesX;
-        playerCamera.target.y = player.CordinatesY;
-        
+        playerCamera.target.x = mainCharacter.CordinatesX;
+        playerCamera.target.y = mainCharacter.CordinatesY;
+
+        for (int i = 0; i < 100; i++)
+        {
+            if (CheckCollisionPointRec(mousePointer, objectHitbox[i]))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    if (objectType[i] == 1)
+                    {
+                        objectHitbox[i] = { -2000, -2000 };
+                        textureStorage[i] = { -2000, -2000 };
+                    }
+                    else if (objectType[i] == 2)
+                    {
+                        objectHitbox[i] = { -2000, -2000 };
+                        textureStorage[i] = { -2000, -2000 };
+                    }
+                }
+            }
+        }
+
+
         // Begin Render
         BeginDrawing();
 
@@ -221,26 +250,31 @@ int main()
         ClearBackground(waterBlue);
 
         // Draw map
-        drawMap(currentMapForm, mapWidth, mapHeight, mapBlockSize, grass, water);
+        drawMap(currentMapForm, mapWidth, mapHeight, mapBlockSize, grass, water, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType, textureStorage);
 
-        DrawTextureEx(player.texture, Vector2{ player.CordinatesX, player.CordinatesY }, 0, 0.15, RAYWHITE);
-        /*DrawRectangle(mainCharacter.characterCordinatesX, mainCharacter.characterCordinatesY, mainCharacter.texture.width * 0.15, mainCharacter.texture.height * 0.15, GOLD);*/
+        /*DrawTextureEx(mainCharacter.texture, Vector2{ mainCharacter.CordinatesX, mainCharacter.CordinatesY }, 0, 0.15, RAYWHITE);*/
 
-        drawObjects(currentMapForm, mapWidth, mapHeight, mapBlockSize, rock, tree1, objectStorage, objectHitbox, objectCounter, objectType);
-
-        for (int i = 0; i < 100; i++)
+        DrawTexture(chMoveXTextureRight, GetScreenWidth() / 2, GetScreenHeight() / 2, RAYWHITE);
+        
+        if (IsKeyDown(KEY_A))
         {
-            if (CheckCollisionPointRec(mousePointer, objectHitbox[i]))
-            {
-                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-                {
-                    DrawRectangleRec(objectHitbox[i], RED);
-                }
-            }
+            DrawTextureRec(chMoveXTextureLeft, frameRecLeft, Vector2{ 0, 0 }, WHITE);
         }
 
-        // Draw inventory blocks
-        /*DrawRectangleGradientV(inventoryPos.x,inventoryPos.y, 30, 30, BLACK, BLANK);*/
+        if (IsKeyDown(KEY_D))
+        {
+            mainCharacter.CordinatesX += 1;
+        }
+        if (IsKeyDown(KEY_W))
+        {
+            mainCharacter.CordinatesY -= 1;
+        }
+        if (IsKeyDown(KEY_S))
+        {
+            mainCharacter.CordinatesY += 1;
+        }
+
+
 
         EndMode2D;
         //spawnCreatures(zombiesCounter, zombies);
@@ -250,7 +284,7 @@ int main()
 
     CloseWindow();
 
-    // Delete the build arrays which are no longer needed
+    // Delete the build arrays which no longer needed
     // Delete buildArra1
     for (int i = 0; i < mapHeight; i++)
     {
