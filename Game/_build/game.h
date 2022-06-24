@@ -4,8 +4,8 @@
 struct characterStats {
     float characterWidth;
     float characterHeight;
-    float characterCordinatesX;
-    float characterCordinatesY;
+    float CordinatesX;
+    float CordinatesY;
     Vector2 characterPosition;
     Rectangle character;
     Texture2D texture;

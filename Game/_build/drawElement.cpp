@@ -2,7 +2,7 @@
 #include "drawElement.h"
 #include "buildMapLayouts.h"
 
-void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100])
+void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D grass, Texture2D water)
 {
     // Draw map
     for (int i = 0; i < mapY; i++)
@@ -43,6 +43,13 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
         }
     }
 
+    
+}
+
+
+// Draw trees and rocks
+void drawObjects(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D rock, Texture2D tree1, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100])
+{
     for (int i = 0; i < mapY; i++)
     {
         for (int j = 0; j < mapX; j++)
@@ -64,10 +71,9 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                                 DrawTextureEx(rock, Vector2{ mapBlockSize.x * j + 27, mapBlockSize.y * i + 5 }, 0, 0.08, RAYWHITE);
 
                                 // Make hitbox for object rock
-                                /*objectHitbox[objectCounter] = { mapBlockSize.x * j + 22, mapBlockSize.y * i + 2, 25, 25 };*/
-                                DrawRectangleRec(objectHitbox[objectCounter], RED);
+                                /*objectHitbox[objectCounter] = { mapBlockSize.x * j + 22, mapBlockSize.y * i + 2, 25, 25 };
 
-                                objectType[objectCounter] = 1;
+                                objectType[objectCounter] = 1;*/
                             }
                             else if (objects[i] == 1)
                             {
@@ -75,10 +81,9 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                                 DrawTextureEx(tree1, Vector2{ mapBlockSize.x * j + 11, mapBlockSize.y * i - 23 }, 0, 0.40, RAYWHITE);
 
                                 // Make hitbox for object tree1
-                                /*objectHitbox[objectCounter] = { mapBlockSize.x * j + 23, mapBlockSize.y * i - float(18.5), 28, 42 };*/
-                                DrawRectangleRec(objectHitbox[objectCounter], RED);
+                                /*objectHitbox[objectCounter] = { mapBlockSize.x * j + 23, mapBlockSize.y * i - float(18.5), 28, 42 };
 
-                                objectType[objectCounter] = 2;
+                                objectType[objectCounter] = 2;*/
                             }
 
                             // Add one position to counter
