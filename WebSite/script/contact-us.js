@@ -1,16 +1,34 @@
-/*Contact us form (Works only if the data is correctly typed by the SMPT(Simple Mail Transfer Protocol); Used )*/
+/*Resetting the form after submition*/
+document.getElementById("Form").reset();
 
-function sendEmail(){
-    Email.send({
-        SecureToken: "3c30919e-59be-4155-906e-fbcf944d2250",
-        To : 'datapirates.contact@gmail.com',
-        From : document.getElementById("email").value,
-        Subject : "New Contact From Enquiry",
-        Body : "Name: " + document.getElementById("name").value
-            + "<br> Email: " + document.getElementById("email").value
-            + "<br> Phone Number: " + document.getElementById("phone").value
-            + "<br> Message: " + document.getElementById("message").value
-    }).then(
-    message => alert("Message Sent Succesfully")
-    );
-}
+/*Validation rules*/
+/*{
+const name = document.getElementById('name')
+const phone = document.getElementById('phone')
+const email = document.getElementById('email')
+const message = document.getElementById('message')
+const errorElement = document.getElementById('error')
+
+form.addEventListener('submit', (e) => {
+  let messages = []
+  if (name.value === '' || name.value == null) {
+    messages.push('Name is required')
+  }
+
+  if (phone.value === '' || phone.value == null) {
+    messages.push('Phone number is required')
+  }
+
+  if (email.value === '' || email.value == null) {
+    messages.push('Email is required')
+  }
+
+  if (message.value === '' || message.value == null) {
+    messages.push('Text is required')
+  }
+  if (messages.length > 0) {
+    e.preventDefault()
+    errorElement.innerText = messages.join(', ')
+  }
+})
+}*/

@@ -2,16 +2,35 @@
 @import "header.css";
 @import "footer.css";
 @import "overview.css";
-@import "about-the-game.css";
-@import "about-us.css";
 @import "contact-us.css";
 @import "extras.css";
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 100px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  border-radius: 100px;
+}
 .overview{
   height: 1080px;
   width: 1920px;
   display: inline-block;
+  background-color: beige;
 }
 
 .game-info{

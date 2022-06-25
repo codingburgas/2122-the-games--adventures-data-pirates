@@ -25,27 +25,25 @@
     <title>Data Pirates</title>
   </head>
   
-  <body>
-    <!--Triangle shape on the top of the page-->
-    <div class="triangle"></div>
+  <body style="background-color:#000;">
     <!-- Navigation Bar Styling -->
     <div class="header">
       <div class="header-bg">
       </div>
-      <div class="header">
         <nav>        
           <ul class="nav">
           <!--Shortcut for the main page with the team logo--><!--To change to the game logo when ready-->
           <li class="shortcut"><a href="index.html"></a><img src="assets/images/data_pirates-transparent.png" class="logo-button"></a></li>
-          <li><a href="overview">Преглед</a></li> 
-          <li><a href="pages/about-the-game.html">За играта</a></li> 
-          <li><a href="pages/about-us.html">За нас</a></li>   
-          <li id="download-button"><a href="pages/download.html">Изтеглете сега</a></li>
+          <li class="anchor"><a href="#overview">Накратко</a></li> 
+          <li class="anchor"><a href="#about-the-game">За играта</a></li> 
+          <li class="anchor"><a href="#about-us">За нас</a></li>
+          <li id="download-button" class="anchor"><a href="pages/download.html">Изтеглете сега</a></li>
           </ul>
         </nav>
-      </div>
+
     </div>
 
+    <!--Download button in the middle of the video and the video-->
     <button class="download-btn">Изтеглете</button>
     <video class="demo cursor" id="game-video" autoplay muted loop style="width:100%">
       <source src="assets/videos/example.mp4" type="video/mp4">
@@ -54,28 +52,29 @@
 
     <!--Overview-->
     <div class="overview">
+      <h1 id="overview">Накратко</h1>
     </div>
 
     <!--About the game-->
     <div class="about-the-game">
       <!--About The Game-->
       <div class="game-info">
-
+        <h1 id="about-the-game">За играта</h1>
       </div>
       <!--How-to-play-->
       <div class="how-to-play">
-
+        <h1>Как се играе</h1>
       </div>
-      
     </div>
 
     <!--About Us-->
     <div class="about-us">
+      <h1 id="about-us">За нас</h1>
     </div>
 
     <!--Contact Us-->
     <div class="contact-us">
-      
+      <h1>Свържи се с нас</h1>
     </div>
 
     <!--Back to top button-->
@@ -85,15 +84,13 @@
 
     <!--Footer-->
     <footer>
+      <!-- Footer language dropdown menu -->
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Смени езика</button>
         <div id="myDropdown" class="dropdown-content">
           <a href="index.html">English</a>
           <a href="index-bg.html">Български</a>
         </div>
-      </div>
-    <div class="footer">
-      <div class="footer-content">
       </div>
       <div class="footer-bottom">
       <p id="name-footer">Data Pirates&copy</p>

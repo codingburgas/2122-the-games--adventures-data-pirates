@@ -1,8 +1,0 @@
-/* Importing CSS Files */
-@import "header.css";
-@import "footer.css";
-*{
-  height: 1080px;
-  width: 1920px;
-  display: inline-block;
-}
