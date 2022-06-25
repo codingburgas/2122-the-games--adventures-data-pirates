@@ -1,8 +1,8 @@
 /*Resetting the form after submition*/
 document.getElementById("Form").reset();
 
-/*Validation rules*/
-/*{
+/*Validation rules(not enough skills to make)*/
+{
 const name = document.getElementById('name')
 const phone = document.getElementById('phone')
 const email = document.getElementById('email')
@@ -31,4 +31,4 @@ form.addEventListener('submit', (e) => {
     errorElement.innerText = messages.join(', ')
   }
 })
-}*/
+}

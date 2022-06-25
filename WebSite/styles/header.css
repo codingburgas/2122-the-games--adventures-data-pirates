@@ -38,7 +38,7 @@ body{
   margin-right: 2%;
   border: 1px solid #000;
   left: 8.5%;
-  top: -35%;
+  top: -43%;
 }
 .shortcut:hover{
   filter: brightness(500%);
@@ -56,8 +56,8 @@ body{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 29%;
-  top: -10%;
+  left: 33%;
+  top: -7%;
   border: 1px solid #000;
   color: black;   
   z-index: 3;
@@ -166,8 +166,8 @@ a:active{
   margin-right: 1%;
   margin-top: 3%;
   margin-right: 2%;
-  left: 40%;
-  top: -30%;
+  left: 50%;
+  top: -29%;
   border: 1px solid #000;
   color: black;   
   transition-duration: 0.5s;
