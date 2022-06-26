@@ -11,11 +11,9 @@
 
 <details open="open">
   <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project"> ➤ About The Project</a></li>
-    <li><a href="#used-technologies"> ➤ Used Technologies</a></li>
-    <li><a href="#contributors"> ➤ Contributors</a></li>
-  </ol>
+    <li><a href="#about-the-project">  &nbsp&nbspAbout The Project</a></li>
+    <li><a href="#used-technologies">  &nbsp&nbspUsed Technologies</a></li>
+    <li><a href="#contributors">   &nbsp&nbspContributors</a></li>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
@@ -28,13 +26,30 @@
 </p>
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+##  <summary>Screenshots</summary>
+<details>
+<summary>Show</summary>
+<br>
+
+
+
+|                               Game                               |                               Game Map                                |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="Images/GameImage2.png" title="The Game" width="100%"> | <img src="Images/GameImage1.png" title="Game Over" width="100%"> |
+
+</details>
+
+</td></tr></table>
+<p></p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ##  Used technologies
 - <img src="Images/VisualStudio-Icon.png" width="20"> Visual studio 2022
 -  <img src="Images/Word-Icon.png" width="20"> Word
-- <img src="Images/PowerPoint-Icon.jpeg" width="20"> PowerPoint
+- <img src="Images/PowerPoint-Icon.png" width="20"> PowerPoint
 - <img src="Images/rayLib-Icon.png" width="20"> Raylib
 - 👩🏻‍💻 Programing languages: C++, JavaScript
 
