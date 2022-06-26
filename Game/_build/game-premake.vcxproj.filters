@@ -12,7 +12,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="manageElements.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="drawElement.cpp">
@@ -26,7 +26,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h">
+    <ClInclude Include="manageElements.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="drawElement.h">

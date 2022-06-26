@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "drawElement.h"
 #include "buildMapLayouts.h"
+#include "manageElements.h"
 
 void storeTexturePosition(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, int objects[50], int objectCounter, int objectType[100], Vector2 textureStorage[100])
 {
@@ -111,9 +112,9 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                     }
                 }
             }
-            else  // Accout forfirst row
+            else  
             {
-                if (i != 0)
+                if (i != 0) // Accout for first row
                 {
                     // Check where to draw water effect
                     if (mapForm[i - 1][j].drawKey == true)
@@ -123,7 +124,6 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
 
                         // Draw wave effect
                         DrawLineEx(Vector2{ mapBlockSize.x * j + float(15.4), mapBlockSize.y * i + 15 }, Vector2{ (mapBlockSize.x * j + 16) + mapBlockSize.x, mapBlockSize.y * i + 15 }, 3, waveEffectBlue);
-
                     }
                 }
 
@@ -133,6 +133,7 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
         }
     }
 
+    // Draw rocks and trees on the map
     for (int i = 0; i < mapY; i++)
     {
         for (int j = 0; j < mapX; j++)
@@ -173,5 +174,50 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                 }
             }
         }
+    }
+}
+
+// Draw the player
+void drawPlayer(playerStats player)
+{
+    switch (player.direction)
+    {
+    case 1:
+        // Draw player's left prespective
+        DrawTextureEx(player.textureLeft, Vector2{ player.CordinatesX, player.CordinatesY }, 0, float(0.15), WHITE);
+        break;
+
+    case 2:
+        // Draw player's right prespective
+        DrawTextureEx(player.textureRight, Vector2{ player.CordinatesX, player.CordinatesY }, 0, float(0.15), WHITE);
+        break;
+
+    case 3:
+        // Draw player's backrwards prespective
+        DrawTextureEx(player.textureBack, Vector2{ player.CordinatesX, player.CordinatesY }, 0, float(0.15), WHITE);
+        break;
+
+    case 4:
+        // Draw player's forwards prespective
+        DrawTextureEx(player.textureFront, Vector2{ player.CordinatesX, player.CordinatesY }, 0, float(0.15), WHITE);
+        break;
+    }
+}
+
+// Draw equipped item
+void drawEquippedItem(Texture2D itemborder, Texture pickaxe, Texture axe, Vector2 inventoryPos, bool isPickEquipped, bool isAxeEquipped)
+{
+    // Check if axe is equipped 
+    if (isAxeEquipped == true)
+    {
+        // Draw indicator that the axe is equipped
+        DrawTextureEx(itemborder, Vector2{ inventoryPos.x - 211, inventoryPos.y - 121 }, 0, float(0.1), RAYWHITE);
+        DrawTextureEx(axe, Vector2{ inventoryPos.x - 210, inventoryPos.y - float(120.5) }, 0, float(0.04), WHITE);
+    }
+    else if(isPickEquipped == true) // Check if pickaxe is equipped 
+    {
+        // Draw indicator that the pickaxe is equipped
+        DrawTextureEx(itemborder, Vector2{ inventoryPos.x - 211, inventoryPos.y - 121 }, 0, float(0.1), RAYWHITE);
+        DrawTextureEx(pickaxe, Vector2{ inventoryPos.x - 210, inventoryPos.y - 120 }, 0, float(0.04), WHITE);
     }
 }

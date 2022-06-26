@@ -176,14 +176,14 @@
     <ClCompile Include="buildMapLayouts.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="drawElement.cpp" />
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="manageElements.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buildMapLayouts.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="drawElement.h" />
-    <ClInclude Include="game.h" />
+    <ClInclude Include="manageElements.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
