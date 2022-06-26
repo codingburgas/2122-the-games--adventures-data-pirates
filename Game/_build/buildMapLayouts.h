@@ -3,6 +3,7 @@
 // Data for every block of the map
 struct mapData {
     bool drawKey = true;
+    bool grassKey = false;
     bool spKey = false;
 };
 

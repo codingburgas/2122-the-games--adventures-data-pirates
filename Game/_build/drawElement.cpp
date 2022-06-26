@@ -86,7 +86,7 @@ void applyObjectHitBox(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapB
 }
 
 
-void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100], Vector2 textureStorage[100])
+void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, Texture2D grassTexture, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100], Vector2 textureStorage[100])
 {
     // Draw map
     for (int i = 0; i < mapY; i++)
@@ -104,6 +104,11 @@ void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, 
                 else
                 {
                     DrawTextureEx(grass, Vector2{ mapBlockSize.x * j + 15,mapBlockSize.y * i }, 0, 0.35, RAYWHITE);
+   
+                    if (mapForm[i][j].grassKey == true)
+                    {
+                        DrawTextureEx(grassTexture, Vector2{ mapBlockSize.x * j + 21,mapBlockSize.y * i + 3}, 0, 0.50, RAYWHITE);
+                    }
                 }
             }
             else  // Accout forfirst row

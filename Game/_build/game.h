@@ -8,5 +8,9 @@ struct characterStats {
     float CordinatesY;
     Vector2 characterPosition;
     Rectangle character;
-    Texture2D texture;
+    Texture2D textureFront;
+    Texture2D textureLeft;
+    Texture2D textureRight;
+    Texture2D textureBack;
+    int direction;
 };
