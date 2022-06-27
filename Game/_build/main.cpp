@@ -15,14 +15,14 @@ int main()
 
     // Declare the parameters for main character
     playerStats player;
-    player.textureFront = LoadTexture("../resources/playerFront.png");
-    player.textureLeft = LoadTexture("../resources/playerLeft.png");
-    player.textureRight = LoadTexture("../resources/playerRight.png");
-    player.textureBack = LoadTexture("../resources/playerBack.png");
+    player.textureFront = LoadTexture("../resources/player/playerFront.png");
+    player.textureLeft = LoadTexture("../resources/player/playerLeft.png");
+    player.textureRight = LoadTexture("../resources/player/playerRight.png");
+    player.textureBack = LoadTexture("../resources/player/playerBack.png");
     player.width = 10;
     player.height = 20;
     player.CordinatesX = GetScreenWidth() / 2 - float(player.width / 2);
-    player.CordinatesY = GetScreenHeight() / 2 - float(player.width / 2);
+    player.CordinatesY = GetScreenHeight() / 2 - float(player.width / 2) + 120;
     player.playerPosition = { player.CordinatesX, player.CordinatesY };
     player.direction = 4;
     float playerSpeed = 1;
@@ -45,14 +45,14 @@ int main()
     int itemStick = 1;
     int itemIronOre = 1;
     int itemWoodenStick = 1;
-    Texture2D woodItem = LoadTexture("../resources/spruceWood.png");
-    Texture2D stoneItem = LoadTexture("../resources/miniRock.png");
-    Texture2D ironOreItem = LoadTexture("../resources/ironOre.png");
-    Texture2D woodenStickItem = LoadTexture("../resources/woodenStick.png");
-    Texture2D itemBorder = LoadTexture("../resources/itemBorder.png");
-    Texture2D taskBorder = LoadTexture("../resources/taskBorder.png");
-    Texture2D pickaxe = LoadTexture("../resources/pickaxe.png");
-    Texture2D axe = LoadTexture("../resources/axe.png");
+    Texture2D woodItem = LoadTexture("../resources/inventoryAndTask/spruceWood.png");
+    Texture2D stoneItem = LoadTexture("../resources/inventoryAndTask/miniRock.png");
+    Texture2D ironOreItem = LoadTexture("../resources/inventoryAndTask/ironOre.png");
+    Texture2D woodenStickItem = LoadTexture("../resources/inventoryAndTask/woodenStick.png");
+    Texture2D itemBorder = LoadTexture("../resources/inventoryAndTask/itemBorder.png");
+    Texture2D taskBorder = LoadTexture("../resources/inventoryAndTask/taskBorder.png");
+    Texture2D pickaxe = LoadTexture("../resources/inventoryAndTask/pickaxe.png");
+    Texture2D axe = LoadTexture("../resources/inventoryAndTask/axe.png");
     Rectangle axeEquipButton = {};
     bool isAxeEquipped = false;
     Rectangle pickAxeEquipButton = {};
@@ -65,16 +65,7 @@ int main()
     mapData currentMapForm[27][43];
     int mapHeight = 27;
     int mapWidth = 43;
-    int currentMapLayout = 1; // temporary map layout randomisation
-    
-    // Load animation textures
-    Texture2D chMoveXTextureRight = LoadTexture("../resources/1stCharacterMovementX.png");
-    Texture2D chMoveXTextureLeft = LoadTexture("../resources/1stCharacterMovementXleft.png");
-    Rectangle frameRecRight = { player.CordinatesX, player.CordinatesY, (float)chMoveXTextureRight.width, (float)chMoveXTextureRight.height };
-    Rectangle frameRecLeft = {0, 0, (float)chMoveXTextureLeft.width / 8, (float)chMoveXTextureLeft.height };
-    int currentFrame = 0;
-    int framesCounter = 0;
-    int framesSpeed = 8;
+    int currentMapLayout = 2; // map layout randomisation
 
     // Declare task variables
     int cTask = 1;
@@ -86,11 +77,11 @@ int main()
     const char* demoCompleted = "Demo completed!";
 
     // Declare map variables
-    Texture2D grass = LoadTexture("../resources/grassBlock.png"); // Load texture for the grass blocks
-    Texture2D grassTexture = LoadTexture("../resources/grassTexture.png"); // Load texture for the grass blocks
-    Texture2D water = LoadTexture("../resources/waterEffect.png"); // Load texture for the water effect
-    Texture2D rock = LoadTexture("../resources/rock.png"); // Load texture for the rock
-    Texture2D tree1 = LoadTexture("../resources/tree1.png"); // Load texture for the spruce tree
+    Texture2D grass = LoadTexture("../resources/map/grassBlock.png"); // Load texture for the grass blocks
+    Texture2D grassTexture = LoadTexture("../resources/map/grassTexture.png"); // Load texture for the grass blocks
+    Texture2D water = LoadTexture("../resources/map/waterEffect.png"); // Load texture for the water effect
+    Texture2D rock = LoadTexture("../resources/map/rock.png"); // Load texture for the rock
+    Texture2D tree1 = LoadTexture("../resources/map/tree1.png"); // Load texture for the spruce tree
     Vector2 mapBlockSize = { 44, 39 };
     int chance;
     int ironOreDropRate;
@@ -100,6 +91,7 @@ int main()
     Rectangle objectHitbox[100];
     int objectType[100];
     Vector2 textureStorage[100];
+    bool isStarterMenuDrawn = false;
 
     // build arrays
     bool** buildArray1 = buildMapLayout1(mapHeight, mapWidth);
@@ -201,10 +193,12 @@ int main()
                 chance = GetRandomValue(0, 6);
                 if (chance == 0)
                 {
+                    // Assign spKey
                     currentMapForm[i][j].spKey = true;
                 }
                 else if (chance == 4)
                 {
+                    // Assign grassKey
                     currentMapForm[i][j].grassKey = true;
                 }
 
@@ -328,6 +322,7 @@ int main()
                     {
                         if (isPickaxeEquipped == true && isAxeEquipped == false)
                         {
+                            // Move object out of the sceen and update item counter
                             objectHitbox[i] = { -2000, -2000 };
                             textureStorage[i] = { -2000, -2000 };
                             requiredItems[0] += itemRock;
@@ -343,6 +338,7 @@ int main()
                     {
                         if (isAxeEquipped == true && isPickaxeEquipped == false)
                         {
+                            // Move object out of the sceen and update item counter
                             objectHitbox[i] = { -2000, -2000 };
                             textureStorage[i] = { -2000, -2000 };
                             requiredItems[1] += itemWood;
@@ -414,6 +410,7 @@ int main()
         // Draw map
         drawMap(currentMapForm, mapWidth, mapHeight, mapBlockSize, grass, water, rock, tree1, grassTexture, objectStorage, objectHitbox, objectCounter, objectType, textureStorage);
 
+        // Draw the player
         drawPlayer(player);
         
         // Check for keyboard input for drawing the inventory
@@ -522,14 +519,31 @@ int main()
             DrawText(currentTask, taskPos.x + float(3), taskPos.y + float(10), 2, BLACK);
         }
 
-
         EndMode2D();
-        //spawnCreatures(zombiesCounter, zombies);
 
         EndDrawing();
     }
 
     CloseWindow();
+
+    //Unload all used textures
+    UnloadTexture(player.textureFront);
+    UnloadTexture(player.textureLeft);
+    UnloadTexture(player.textureRight);
+    UnloadTexture(player.textureBack);
+    UnloadTexture(woodItem);
+    UnloadTexture(stoneItem);
+    UnloadTexture(ironOreItem);
+    UnloadTexture(woodenStickItem);
+    UnloadTexture(itemBorder);
+    UnloadTexture(taskBorder);
+    UnloadTexture(pickaxe);
+    UnloadTexture(axe);
+    UnloadTexture(grass);
+    UnloadTexture(grassTexture); 
+    UnloadTexture(water); 
+    UnloadTexture(rock); 
+    UnloadTexture(tree1);
 
     return 0;
 }

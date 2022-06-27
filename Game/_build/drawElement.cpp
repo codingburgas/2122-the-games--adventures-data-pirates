@@ -3,6 +3,7 @@
 #include "buildMapLayouts.h"
 #include "manageElements.h"
 
+// Store texture(trees' and rocks') positions
 void storeTexturePosition(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, int objects[50], int objectCounter, int objectType[100], Vector2 textureStorage[100])
 {
     for (int i = 0; i < mapY; i++)
@@ -42,7 +43,7 @@ void storeTexturePosition(mapData mapForm[27][43], int mapX, int mapY, Vector2 m
     }
 }
 
-
+// Save object hitboxes
 void applyObjectHitBox(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100])
 {
     for (int i = 0; i < mapY; i++)
@@ -86,7 +87,7 @@ void applyObjectHitBox(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapB
     }
 }
 
-
+// Draw the whole map
 void drawMap(mapData mapForm[27][43], int mapX, int mapY, Vector2 mapBlockSize, Texture2D grass, Texture2D water, Texture2D rock, Texture2D tree1, Texture2D grassTexture, int objects[50], Rectangle objectHitbox[100], int objectCounter, int objectType[100], Vector2 textureStorage[100])
 {
     // Draw map
