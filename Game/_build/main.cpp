@@ -39,11 +39,16 @@ int main()
     Vector2 taskPos = { float(GetScreenWidth()) - 60,  float(GetScreenHeight()) - 60};
     bool drawInventory = false;
     bool drawTask = false;
-    int requiredItems[2] = { 0,0 };
+    int requiredItems[5] = { 0,0,0,0,0 };
     int itemRock = 1;
     int itemWood = 1;
+    int itemStick = 1;
+    int itemIronOre = 1;
+    int itemWoodenStick = 1;
     Texture2D woodItem = LoadTexture("../resources/spruceWood.png");
     Texture2D stoneItem = LoadTexture("../resources/miniRock.png");
+    Texture2D ironOreItem = LoadTexture("../resources/ironOre.png");
+    Texture2D woodenStickItem = LoadTexture("../resources/woodenStick.png");
     Texture2D itemBorder = LoadTexture("../resources/itemBorder.png");
     Texture2D taskBorder = LoadTexture("../resources/taskBorder.png");
     Texture2D pickaxe = LoadTexture("../resources/pickaxe.png");
@@ -74,13 +79,11 @@ int main()
     // Declare task variables
     int cTask = 1;
     const char* currentTask;
-    const char* taskCraft1 = "Task: Craft a pickaxe";
-    const char* taskCraft2 = "Task: Craft a axe";
     const char* taskCollect1 = "Task: Collect sticks";
     const char* taskCollect2 = "Task: Collect wood";
     const char* taskCollect3 = "Task: Collect stones";
     const char* taskMine = "Task: Mine iron";
-
+    const char* demoCompleted = "Demo completed!";
 
     // Declare map variables
     Texture2D grass = LoadTexture("../resources/grassBlock.png"); // Load texture for the grass blocks
@@ -90,7 +93,8 @@ int main()
     Texture2D tree1 = LoadTexture("../resources/tree1.png"); // Load texture for the spruce tree
     Vector2 mapBlockSize = { 44, 39 };
     int chance;
-
+    int ironOreDropRate;
+    int stickeDropRate;
     int objectStorage[50];
     int objectCounter = 0;
     Rectangle objectHitbox[100];
@@ -223,6 +227,7 @@ int main()
         }
     }
 
+    // Store texture positions
     storeTexturePosition(currentMapForm, mapWidth, mapHeight, mapBlockSize, objectStorage, objectCounter, objectType, textureStorage);
 
     // Create hitboxes for objects on map
@@ -231,6 +236,7 @@ int main()
     //Main game loop
     while (!WindowShouldClose())
     {
+        // Change world coordinates to camera coordinates
         mousePointer = GetScreenToWorld2D(GetMousePosition(), playerCamera);
         inventoryPos = GetScreenToWorld2D(Vector2{ float(GetScreenWidth()) - 110, float(GetScreenHeight()) - 110}, playerCamera);
         taskPos = GetScreenToWorld2D(Vector2{ float(GetScreenWidth()) - 590, float(GetScreenHeight()) - 120 }, playerCamera);
@@ -311,28 +317,50 @@ int main()
         playerCamera.target.x = player.CordinatesX;
         playerCamera.target.y = player.CordinatesY;
 
+        // Harvest materials
         for (int i = 0; i < 100; i++)
         {
             if (CheckCollisionPointRec(mousePointer, objectHitbox[i]))
             {
-                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
                 {
                     if (objectType[i] == 1)
                     {
-                        objectHitbox[i] = { -2000, -2000 };
-                        textureStorage[i] = { -2000, -2000 };
-                        requiredItems[0] += itemRock;
+                        if (isPickaxeEquipped == true && isAxeEquipped == false)
+                        {
+                            objectHitbox[i] = { -2000, -2000 };
+                            textureStorage[i] = { -2000, -2000 };
+                            requiredItems[0] += itemRock;
+
+                            ironOreDropRate = (GetRandomValue(0, 2));
+                            if (ironOreDropRate == 2)
+                            {
+                                requiredItems[3] += itemIronOre;
+                            }
+                        }
                     }
                     else if (objectType[i] == 2)
                     {
-                        objectHitbox[i] = { -2000, -2000 };
-                        textureStorage[i] = { -2000, -2000 };
-                        requiredItems[1] += itemWood;
+                        if (isAxeEquipped == true && isPickaxeEquipped == false)
+                        {
+                            objectHitbox[i] = { -2000, -2000 };
+                            textureStorage[i] = { -2000, -2000 };
+                            requiredItems[1] += itemWood;
+                        }
+                        else
+                        {
+                            stickeDropRate = GetRandomValue(0, 3);
+                            if (stickeDropRate == 3)
+                            {
+                                requiredItems[2] += itemWoodenStick;
+                            }
+                        }
                     }
                 }
             }
         }
 
+        // Update task text
         if (cTask == 1)
         {
             currentTask = taskCollect1;
@@ -347,15 +375,32 @@ int main()
         }
         else if (cTask == 4)
         {
-            currentTask = taskCraft1;
+            currentTask = taskMine;
         }
         else if (cTask == 5)
         {
-            currentTask = taskCraft1;
+            currentTask = demoCompleted;
         }
-        else if (cTask == 6)
+
+        // Update task
+        if (requiredItems[2] >= 10)
         {
-            currentTask = taskMine;
+            cTask = 2;
+        }
+        
+        if (requiredItems[1] >= 10)
+        {
+            cTask = 3;
+        }
+
+        if (requiredItems[0] >= 10)
+        {
+            cTask = 4;
+        }
+
+        if (requiredItems[3] >= 5)
+        {
+            cTask = 5;
         }
 
         // Begin Render
@@ -401,21 +446,23 @@ int main()
 
             // Draw pickaxe tool
             DrawTextureEx(pickaxe, Vector2{inventoryPos.x + 3, inventoryPos.y - float(25)}, 0, 0.1, RAYWHITE);
-            DrawRectangle(inventoryPos.x+1, inventoryPos.y, pickaxe.width * 0.135, pickaxe.height * 0.135, BLANK); 
+            DrawRectangle(inventoryPos.x + 1, inventoryPos.y, pickaxe.width * 0.135, pickaxe.height * 0.135, BLANK);
 
             // Draw wood item
             DrawTextureEx(woodItem, Vector2{ inventoryPos.x, inventoryPos.y - 56}, 0, float(0.2), RAYWHITE);
             DrawText(TextFormat("%i", requiredItems[1]), inventoryPos.x + float(18), inventoryPos.y - float(41), 4, WHITE);
 
-            /*DrawTextureEx();
-            DrawText();  stick */
+            // Draw wooden stick item
+            DrawTextureEx(woodenStickItem, Vector2{ inventoryPos.x + float(2.5), inventoryPos.y - float(81) }, 0, float(0.15), RAYWHITE);
+            DrawText(TextFormat("%i", requiredItems[2]), inventoryPos.x + float(18), inventoryPos.y - float(69), 4, WHITE);
 
             // Draw stone item
             DrawTextureEx(stoneItem, Vector2{ inventoryPos.x + float(2.5), inventoryPos.y - float(109) }, 0, float(0.15), RAYWHITE);
             DrawText(TextFormat("%i", requiredItems[0]), inventoryPos.x + float(18), inventoryPos.y - float(97), 4, WHITE);
 
-            /*DrawTextureEx();
-            DrawText();  iron */ 
+            // Draw iron ore item
+            DrawTextureEx(ironOreItem, Vector2{ inventoryPos.x + float(2.5), inventoryPos.y - float(137) }, 0, float(0.15), RAYWHITE);
+            DrawText(TextFormat("%i", requiredItems[3]), inventoryPos.x + float(18), inventoryPos.y - float(125), 4, WHITE);
         }
 
         // Check for keyboard input for equipping the axe
