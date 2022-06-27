@@ -9,12 +9,13 @@
 }
 /* Set footer design */
 footer{
-    background: #000;
-    height: auto;
+    background: var(--primary-color);
+    height: 30%;
     width: 100vw;
     font-family: 'Ubuntu', sans-serif;
     padding-top: 40px;
     color: #fff;
+    border-top: 6px solid rgb(40, 40, 40);
 }
 .footer-content{
     display: flex;
@@ -30,7 +31,7 @@ footer{
     font-size: 14px;
 }
 .footer-bottom{
-    background: #000;
+    background: var(--primary-color);
     width: 100vw;
     padding: 20px 0;
     text-align: center;
@@ -45,62 +46,76 @@ footer{
     display: grid;
     margin-top: 14%;
     margin-left: -80%;
+    color: var(--secondary-color);
+}
+#name-game{
+    position: relative;
+    display: grid;
+    top: -18px;
+    color: var(--secondary-color);
 }
 /* Display of the "2022" date */
 #date{
     display: grid;
-    margin-top: -1%;
+    margin-top: -2%;
     margin-left: 80%;
+    color: var(--secondary-color);
 }
+
 /* Dropdown Button */
 .dropbtn {
-    position: relative;
-    background-color: #000;
-    color: white;
-    padding: 16px;
-    margin-left: 680%;
-    font-size: 16px;
-    width: 100%;
-    font-family: 'Ubuntu', sans-serif; 
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    transition-duration: 1s;
-  }
-  
-  /* Dropdown button on hover & focus */
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #fff;
-    color: #000;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    margin-left: 675%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd}
-  
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {display:block;}
+  position: relative;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 16px;
+  margin-left: 680%;
+  font-size: 16px;
+  width: 100%;
+  font-family: 'Ubuntu', sans-serif; 
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: 1s;
+  top: -35px;
+  left: 80px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  margin-left: 725%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 16.5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display:block;
+}

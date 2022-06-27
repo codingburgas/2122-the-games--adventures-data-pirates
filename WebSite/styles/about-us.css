@@ -1,8 +1,12 @@
+/* Style of about us menu */
 .about-us{
+    position: relative;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Exo;
+    background-color: var(--primary-color);
+    top: 100px;
   }
   @font-face {
     font-family: 'Ubuntu', sans-serif;
@@ -14,8 +18,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0c52a1;
+    background-color: var(--secondary-color);
+    color: #000;
   }
+
+  #about-us {
+    color: var(--primary-color);
+  }
+  /* Picture animaitons */
   .profile-card{
     position: relative;
     width: 220px;
@@ -50,6 +60,7 @@
   .profile-card:hover img{
     border-radius: 10px;
   }
+  /* Caption design */
   .caption{
     text-align: center;
     transform: translateY(-80px);
@@ -80,18 +91,20 @@
     font-size: 13px;
     text-align: center;
   }
+  
+  /* Style of Daniil*/
   #dani-name{
     font-size: 20px;
   }
   .above{
     position: relative;
     margin-left: 1%;
-    top: -30%;
+    top: -27%;
     left: 14%;
   }
   .under{
     position: relative;
     margin-left: 1%;
-    top: 5%;
+    top: 8%;
     left: -38.5%;
   }

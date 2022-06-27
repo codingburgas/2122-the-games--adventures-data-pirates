@@ -1,0 +1,124 @@
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.overview{
+    background-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+#overview{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 1%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.overview-info{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 6%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#about-the-game{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 1%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.about-the-game{
+    background-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.about-the-game-info{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 6%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.about-us{
+    background-color: var(--primary-color);
+    color: var(--primary-color);
+}
+#about-us{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 1%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#how-to-play{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 5%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#contact-us{
+    position: relative;
+    text-align: center;
+    left: -8.5%;
+    top: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
+
+.contact-info{
+    position: relative;
+    left: 21.5%;
+    top: 3%;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
+
+.contact-email{
+    position: relative;
+    left: 26.5%;
+    top: 3%;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
+
+.name-ray{
+    position: absolute;
+    font-family: 'VT323';
+    left: 10%;
+    font-size: 40px;
+    list-style-type: none;
+    color: var(--primary-color);
+}
+
+.about-us-info{
+    position: relative;
+    left: 17.2%;
+    top: -6%;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
+
+.how-to-play-info{
+    position: relative;
+    left: 30%;
+    top: 25%;
+    font-size: 26px;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
+
+.change-theme{
+    position: relative;
+    left: 6.5%;
+    top: -5%;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--secondary-color);
+}
+
+.control-pic{
+    left: 20%;
+}

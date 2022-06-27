@@ -2,6 +2,7 @@
 @import "header.css";
 @import "footer.css";
 
+/* Style of the contact us menu */
 .contact-us{
   padding: 0;
   margin: 0;
@@ -17,18 +18,22 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  left: -8.7%;
-  bottom: -10%;
+  left: -8.5%;
+  bottom: -2.7%;
 }
 
+/* Form style */
 form{
-  background: #fff;
+  background: var(--primary-color);
   width: 500px;
   padding: 30px;
   font-size: 18px;
+  border-radius: 25px;
 }
 
 .message-icon{
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -49,7 +54,7 @@ form input, textarea{
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--secondary-color);
   outline: none;
 }
 
@@ -67,9 +72,24 @@ form input, textarea{
 .send-btn{
   width: 100px;
   border: none;
-  background: #000;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 16px;
   padding: 6px 0;
   border-radius: 50px;
+  transition-duration: 0.5s;
+}
+
+.send-btn:hover{
+  width: 120px;
+}
+
+.bi {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+.i-t /*input-textarea*/{
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }

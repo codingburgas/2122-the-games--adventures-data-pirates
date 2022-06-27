@@ -10,12 +10,12 @@
 
 
 body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: var(--secondary-color);
-  }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: var(--secondary-color);
+    }
 
 /* Style of dark mode icon */
 #icon{
@@ -37,7 +37,7 @@ body {
 }
 
 .ray-pic{
-  filter: blur(3px);
+    filter: blur(3px);
 }
 /* Style of scrollbar */
 /* width */
@@ -83,6 +83,7 @@ body {
   display: inline-block;
   background-color: var(--secondary-color);
 }
+/* anchor styling */
 .how-to-play{
   height: 880px;
   width: 1920px;
@@ -139,27 +140,68 @@ body {
     left: 5%;
     border-radius: 10px;
 }
-
+.anchor{
+    position: relative;
+    font-size: 16pt;
+    font-family: 'Ubuntu', sans-serif;
+    list-style-type: none;
+    display: inline-block;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-right: 1%;
+    margin-top: 3%;
+    margin-right: 2%;
+    left: 31.7%;
+    top: -7%;
+    border: 1px solid var(--secondary-color);
+    color: var(--primary-color);   
+    z-index: 3;
+}
+#download-button{
+    position: relative;
+    font-size: 16pt;
+    font-family: 'Ubuntu', sans-serif;
+    list-style-type: none;
+    display: inline-block;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-right: 1%;
+    margin-top: 3%;
+    margin-right: 2%;
+    left: 47%;
+    top: -29%;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);   
+    transition-duration: 0.5s;
+    z-index: 3;
+}
+.how-to-play-info{
+    position: relative;
+    left: 28.5%;
+    top: 25%;
+    font-size: 26px;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--primary-color);
+}
 /* Dropdown Button */
 .dropbtn {
-  position: relative;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  padding: 16px;
-  margin-left: 877%;
-  font-size: 16px;
-  width: 100%;
-  font-family: 'Ubuntu', sans-serif; 
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  transition-duration: 1s;
-  top: -35px;
-  left: 80px;
-}
+    position: relative;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 16px;
+    margin-left: 755%;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif; 
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 1s;
+    top: -35px;
+    left: 80px;
+  }
 
-
-/* Dropdown button on hover & focus */
+  /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -177,7 +219,7 @@ body {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  margin-left: 923%;
+  margin-left: 800%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   top: 16.5px;
@@ -199,80 +241,53 @@ body {
   display:block;
 }
 
-#name-gabe-dani{
-  font-size: 18.5px;
-}
 .about-us-info-email{
   position: relative;
   top: -5%;
-  left: 10%;
+  left: 11%;
   font-family: 'Ubuntu', sans-serif;
   color: var(--primary-color);
 }
-/*  */
-.contact-email{
+.contact-info-es{
   position: relative;
-  top: 4%;
-  left: 23.5%;
+  top: 3%;
+  left: 20%;
   font-family: 'Ubuntu', sans-serif;
   color: var(--primary-color);
 }
-/* info on how to play */
-.how-to-play-info{
+
+.contact-email-es{
   position: relative;
-  left: 25%;
-  font-size: 25px;
-}
-.ray-name{
-  position: absolute;
-  font-family: 'VT323';
-  font-size: 36px;
-  top: 29.7%;
-  left: 41.2%;
-  color: var(--primary-color);
-}
-.anchor{
-  position: relative;
-  font-size: 16pt;
+  top: 3%;
+  left: 19%;
   font-family: 'Ubuntu', sans-serif;
-  list-style-type: none;
-  display: inline-block;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-right: 1%;
-  margin-top: 3%;
-  margin-right: 2%;
-  left: 33%;
-  top: -7%;
-  border: 1px solid var(--secondary-color);
-  color: var(--primary-color);   
-  z-index: 3;
+  color: var(--primary-color);
 }
 .story-1{
-  position: absolute;
-  font-family: 'Ubuntu', sans-serif;
-  left: 29%;
-  top: 8%;
-  font-size: 19.5px;
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 8%;
+    font-size: 20px;
 }
 .story-2{
-  position: absolute;
-  font-family: 'Ubuntu', sans-serif;
-  left: 29%;
-  top: 13%;
-  font-size: 19px;
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 13%;
+    font-size: 20px;
 }
 .story-3{
-  position: absolute;
-  font-family: 'Ubuntu', sans-serif;
-  left: 29%;
-  top: 18%;
-  font-size: 20px;
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 18%;
+    font-size: 20px;
 }
 .story-4{
-  position: absolute;
-  font-family: 'Ubuntu', sans-serif;
-  left: 29%;
-  top: 23%;
-  font-size: 19.5px;
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 23%;
+    font-size: 20px;
 }

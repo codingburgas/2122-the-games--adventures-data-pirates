@@ -14,18 +14,22 @@
 
     <!-- Importing JS Files -->
     <script type="text/javascript" src="script/header.js" defer></script>
+    <script type="text/javascript" src="script/how-to-play.js" defer></script>
     <script type="text/javascript" src="script/contact-us.js" defer></script>
     <script type="text/javascript" src="script/back-to-top.js" defer></script>
     <script type="text/javascript" src="script/footer.js" defer></script>
+    <script type="text/javascript" src="script/dark-theme.js" defer></script>
+    <script type="text/javascript" src="script/download.js" defer></script>
+
 
     <!-- Importing a Favicon for the Website -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/data_pirates.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/data_pirates-transparent.png">
 
     <!-- Title of the Page-->
-    <title>Data Pirates</title>
+    <title>Data Pirates - Ray's Quest</title>
 
   </head>
-  
+  <!--Background of Body-->
   <body style="background-color:#000;"></body>
     <!-- Navigation Bar Styling -->
     <div class="header">
@@ -34,42 +38,95 @@
         <nav>        
           <ul class="nav">
             <!--Shortcut for the main page with the team logo--><!--To change to the game logo when ready-->
-            <li class="shortcut"><a href="index.html"></a><img src="assets/images/data_pirates-transparent.png" class="logo-button"></a></li>
+            <li class="shortcut"><a href="#game-video"><img src="assets/images/logo.png" class="logo-button"></a></li>
+            <li class="name-ray"><p>Ray's Quest</p></li>
             <li class="anchor"><a href="#overview">Overview</a></li> 
-            <li class="anchor"><a href="#about-the-game">About the Game</a></li> 
+            <li class="anchor"><a href="#how-to-play">How to play</a></li> 
             <li class="anchor"><a href="#about-us">About us</a></li>
-            <li id="download-button" class="anchor"><a href="pages/download.html">Download Now</a></li>
+            <li id="download-button" class="anchor"><a href="assets/images/arrow-to-top.png" download>Download Now</a></li>
           </ul>
         </nav>
     </div>
 
     <!--Download button in the middle of the video and the video-->
-    <button class="download-btn">Download</button>
-    <video class="demo cursor" id="game-video" autoplay muted loop style="width:100%">
-      <source src="assets/videos/example.mp4" type="video/mp4">
-      <source src="assets/videos/example.ogg" type="video/ogg">
-    </video>
+    <button class="download-btn"><a href="assets/images/arrow-to-top.png" download>Download</a></button>
+    <img src="/assets/images/ray-durvarq.png" alt="Ray" style="width:100%; height:100%;" class="ray-pic">
 
     <!--Overview-->
     <div class="overview">
       <h1 id="overview">Overview</h1>
-    </div>
-    
-    <!--About the game-->
-    <div class="about-the-game">
-      <!--About The Game-->
-      <div class="game-info">
-        <h1 id="about-the-game">About the game</h1>
+      <img src="assets/images/map1.png" class="map1">
+      <img src="assets/images/map2.png" class="map2">
+      <img src="assets/images/map3.png" class="map3">
+      <img src="assets/images/Ray.png" class="ray">
+      <p class="ray-name">Ray</p>
+      <p class="story-1">Ray is on a ship going to a unknown destination. Suddenly a storm occurs and the ship is destroyed.</p>
+      <p class="story-2">Ray is unconsious, but the waves somehow manage to get him to an island. He wakes up and doesn't have anything.</p>
+      <p class="story-3">He barely remembers anything, and he doesn't actually remember how he got there.</p>
+      <p class="story-4">The island is rich in materials, and his task is to collect them and build a ship to get back home.</p>
+      <ol class="materials">Materials
+        <li class="materials-1">Wood</li>
+        <li class="materials-2">Sticks</li>
+        <li class="materials-3">Rocks</li>
+        <li class="materials-4">Iron</li>
+      </ol>
+
+      <div style="text-align:center;">
+        <span class="dot-ss"></span> 
+        <span class="dot-ss"></span> 
+        <span class="dot-ss"></span> 
       </div>
-      <!--How-to-play-->
-      <div class="how-to-play">
-        <h1>How to play</h1>
+    </div> 
+    <!--How-to-play-->
+    <div class="how-to-play">
+      <h1 id="how-to-play">How to play</h1>
+      <p class="how-to-play-info">Our game has simple controls to play with. You can only play the game on PC.</p>
+      <p class="how-to-play-info">You use <strong>W A S D</strong> to move the character Ray.</p>
+      <p class="how-to-play-info">You use <strong>LMB</strong> to gather materials.</p>
+      <p class="how-to-play-info">You use <strong>E</strong> to open your Inventory.</p>
+      <p class="how-to-play-info">You use <strong>Q</strong> to open your current task.</p>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="assets/images/wasd_keys.png" style="width:50%">
+          <div class="sl-text">Movement keys</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="assets/images/right-mouse-btn.png" style="width:33.5%" class="control-pic">
+          <div class="sl-text">Gather</div>
+        </div>
+        <!--<div class="mySlides fade">
+          <div class="numbertext">3 / 5</div>
+          <img src="assets/images/left-mouse-btn.png" style="width:50%">
+          <div class="sl-text">Defence</div>
+        </div>-->
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="assets/images/Q_key-transparent.png" style="width:33.5%" class="control-pic">
+          <div class="sl-text">Open Current Task</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="assets/images/E_key-transparent.png" style="width:33.5%" class="control-pic">
+          <div class="sl-text">Open Inventory</div>
+        </div>
+      </div>
+      <br>
+
+      <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <!--<span class="dot"></span> -->
+        <span class="dot"></span> 
+        <span class="dot"></span> 
       </div>
     </div>
 
     <!--About Us-->
     <div class="about-us">
       <h1 id="about-us">About us</h1>
+      <!-- Style of the developers' pictures and description  -->
       <div class="main">
         <div class="above">
           <div class="profile-card">
@@ -77,7 +134,7 @@
               <img src="assets/images/niki.jpg">
             </div>
             <div class="caption">
-              <h3>Nikolai Dimitrov</h3>
+              <h3>Nikolay Dimitrov</h3>
               <p>Scrum Trainer</p>
               <a href="mailto:NDDimitrov21@codingburgas.bg" style="color: #000;" class="email-about">NDDimitrov21@codingburgas.bg</a>
               <div class="social-links">
@@ -191,10 +248,14 @@
           </div>
         </div>
       </div>
+      <p class="about-us-info">This is our team, consisted of a Scrum Trainer, QA, Back-End & Front-End Game Developers and Back-End & Front-End Web Developers.</p>
+      <p class="about-us-info">You can find more about us when you hover over the pictures and if you want to contact any of us, click on the corresponding email.</p>
     </div>
     <!--Contact Us-->
     <div class="contact-us" id="Form">
-      <h1>Contact us</h1>
+      <h1 id="contact-us">Contact us</h1>
+      <p class="contact-info">This form is especially made for your questions and problems with the game "<strong>Ray's Quest&trade;</strong>" or with the website. </p>
+      <p class="contact-email">You can also contact us by writing to this email: <a href="mailto:datapirates.contact@gmail.com" style="color:blue;" class="data-pirates-email">datapirates.contact@gmail.com</a>.</p>
       <div class="hero">
         <form action="https://formspree.io/f/mjvldelq" method="POST" autocomplete="off">
           <div class="message-icon">
@@ -203,19 +264,19 @@
           </div>
           <div id="input-field">
             <i class="bi bi-person"></i>
-            <input type="text" placeholder="Name" name="Name" value="">
+            <input class="i-t" type="text" placeholder="Name" name="Name" value="">
           </div>
           <div id="input-field">
             <i class="bi bi-telephone"></i>
-            <input type="text" placeholder="Phone No." name="Phone" value="">
+            <input class="i-t" type="text" placeholder="Phone No." name="Phone" value="">
           </div>
           <div id="input-field">
             <i class="bi bi-envelope"></i>
-            <input type="email" placeholder="Email Address" name="Email" value="">
+            <input class="i-t" type="email" placeholder="Email Address" name="Email" value="">
           </div>
           <div id="input-field">
             <i class="bi bi-chat-right-dots"></i>
-            <textarea name="Message" placeholder="Message" rows="10"></textarea>
+            <textarea class="i-t" name="Message" placeholder="Message" rows="10"></textarea>
           </div>
           <input type="submit" value="Submit" class="send-btn">
         </form>
@@ -224,21 +285,25 @@
 
     <!--Back to top button -->
     <div class="top-btn-bg">
-      <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="assets/images/arrow.png" id="arrow"></button>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="assets/images/arrow-to-top.png" id="arrow"></button>
     </div>
 
     <!--Footer-->
     <footer>
+      <img src="assets/images/sun.png" id="icon">
+      <p class="change-theme">Change theme</p>
       <!-- Footer language dropdown menu -->
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Change Language</button>
         <div id="myDropdown" class="dropdown-content">
           <a href="index.html">English</a>
           <a href="index-bg.html">Български</a>
+          <a href="index-sp.html">Español</a>
         </div>
       </div>
       <div class="footer-bottom">
         <p id="name-footer">Data Pirates&copy</p>
+        <p id="name-game">Ray's Quest&copy</p>
         <p id="date">2022</p> 
       </div>
     </footer>

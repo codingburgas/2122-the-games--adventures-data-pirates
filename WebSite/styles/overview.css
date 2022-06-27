@@ -1,0 +1,108 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Details of the overview pictures and text */
+.map1{
+    position: absolute;
+    left: 1%;
+    height: 250px;
+    width: 500px;
+    border-radius: 10px;
+}
+.map2{
+    position: absolute;
+    left: 54%;
+    top: 30%;
+    height: 250px;
+    width: 500px;
+    border-radius: 10px;
+}
+.map3{
+    position: absolute;
+    left: 1%;
+    top: 57%;
+    height: 250px;
+    width: 500px;
+    border-radius: 10px;
+}
+.ray{
+    position: absolute;
+    top: 33%;
+    left: 40%;
+    transition-duration: 1s;
+}
+.ray:hover{
+    filter: brightness(500%);
+}
+.ray-name{
+    position: absolute;
+    font-family: 'VT323';
+    font-size: 36px;
+    top: 29.7%;
+    left: 41.7%;
+    color: var(--primary-color);
+}
+.story-1{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 8%;
+    font-size: 20px;
+}
+.story-2{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 13%;
+    font-size: 18.9px;
+}
+.story-3{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 18%;
+    font-size: 20px;
+}
+.story-4{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    left: 29%;
+    top: 23%;
+    font-size: 20px;
+}
+.materials{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    top: 30.5%;
+    left: 10%;
+    font-size: 40px;
+}
+.materials-1{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    top: 110%;
+    left: 20%;
+    font-size: 40px;
+}
+.materials-2{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    top: 200%;
+    left: 20%;
+    font-size: 40px;
+}
+.materials-3{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    top: 300%;
+    left: 20%;
+    font-size: 40px;
+}
+.materials-4{
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    top: 400%;
+    left: 20%;
+    font-size: 40px;
+}

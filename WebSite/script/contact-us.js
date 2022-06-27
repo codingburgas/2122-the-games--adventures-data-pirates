@@ -9,6 +9,7 @@ const email = document.getElementById('email')
 const message = document.getElementById('message')
 const errorElement = document.getElementById('error')
 
+/* Form requirements */
 form.addEventListener('submit', (e) => {
   let messages = []
   if (name.value === '' || name.value == null) {

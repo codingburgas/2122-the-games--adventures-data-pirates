@@ -2,70 +2,118 @@
 @import "header.css";
 @import "footer.css";
 @import "overview.css";
+@import "how-to-play.css";
 @import "about-us.css";
 @import "contact-us.css";
 @import "extras.css";
+@import "design.css";
 
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: var(--secondary-color);
+  }
+/* Style of dark mode icon */
+#icon{
+  position: relative;
+  width: 50px; 
+  cursor: pointer;
+  left: 8.5%;
+  top: 15%;
+  z-index: 3;
+}
+/* Dark theme CSS */
+:root{
+  --primary-color: #000;
+  --secondary-color: #fff;
+}
+.dark-theme{
+  --primary-color: #fff;
+  --secondary-color: #000;
+}
+
+.ray-pic{
+  filter: blur(3px);
+}
+/* Style of scrollbar */
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
+  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+}
+
+::-webkit-scrollbar-track:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 100px; 
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
   border-radius: 100px;
-}
-.overview{
-  height: 1080px;
-  width: 1920px;
-  display: inline-block;
-  background-color: beige;
+  color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
-.game-info{
+/* Style of the different parts */
+.overview{
+  position: relative;
   height: 1080px;
   width: 1920px;
   display: inline-block;
-  background-color: blue;
+  background-color: var(--secondary-color);
 }
+/* paragraph styling */
 .how-to-play{
-  height: 1080px;
+  height: 880px;
   width: 1920px;
   display: inline-block;
-  background-color: violet;
+  background-color: #717171;
+  border-bottom: 6px solid var(--primary-color);
+  border-top: 6px solid var(--primary-color);
 }
+/* anchor styling */
 .about-us{
   height: 1080px;
   width: 1920px;
   display: inline-block;
-  background-color: #0c52a1;
+  background-color: var(--secondary-color);
 }
+/* anchor styling */
 .contact-us{
-    height: 1080px;
+    height: 750px;
     width: 1920px;
     display: inline-block;
-    background-color: pink;
+    background-color: var(--secondary-color);
 }
 
+/* Style of download button */
 .download-btn{
   font-family: 'Ubuntu', sans-serif;
   position: absolute;
   background-color: transparent;
   border: 2px;
   border-style: solid;
-  border-color: rgb(222, 13, 13);
+  border-color: var(--primary-color);
   color: white;
   cursor: pointer;
   font-size: 40px;
@@ -80,14 +128,19 @@
 .download-btn:hover{
   top: 58%;
 }
+/* Style of the game video and dropdown menu of the footer */
 #game-video{
   filter: blur(3px);
 }
+/* position to the dropdown button */
 .dropdown{
-  right: -10%;
+  top: -25px;
+  left: 5%;
   text-align: center;
 }
+/* footer styling */
 #myDropdown{
-    left: 5.5%;
+    left: 5%;
     border-radius: 10px;
 }
+
